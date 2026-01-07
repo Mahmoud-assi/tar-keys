@@ -1,7 +1,7 @@
 import { type RouteObject, Outlet } from 'react-router-dom'
 import Layout from '@/layouts'
 import { lazy, Suspense } from 'react'
-import { PageLoading } from '@/components/PageLoading'
+import Loader from '@/components/Loader'
 export const DashboardPage = lazy(() => import('@/pages/Dahsboard'))
 
 // eslint-disable-next-line react-refresh/only-export-components
@@ -9,7 +9,7 @@ export const routesSection: RouteObject[] = [
   {
     element: (
       <Layout>
-        <Suspense fallback={<PageLoading />}>
+        <Suspense fallback={<Loader />}>
           <Outlet />
         </Suspense>
       </Layout>

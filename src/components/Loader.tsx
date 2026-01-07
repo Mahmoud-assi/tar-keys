@@ -1,7 +1,7 @@
 import { alpha, LinearProgress, linearProgressClasses, Stack } from '@mui/material'
 import { motion } from 'framer-motion'
 
-export function PageLoading({ shared = false }: { shared?: boolean }) {
+export default function Loader({ shared = false }: { shared?: boolean }) {
   return (
     <Stack
       justifyContent="center"

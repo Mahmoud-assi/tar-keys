@@ -17,12 +17,9 @@ export default function Layout({ children }: PropsWithChildren) {
       >
         <Box
           display="grid"
-          px={2}
           sx={{
             width: '100%',
             minHeight: `calc(100dvh - ${APPBAR_HEIGHT}px)`,
-            pt: 1,
-            pb: 2,
           }}
         >
           {children}
