@@ -1,0 +1,63 @@
+import { css } from '@emotion/react'
+import { type Theme, alpha } from '@mui/material'
+
+export default function GlobalStyles(theme: Theme) {
+  return css`
+    ::-webkit-scrollbar {
+      width: 10px;
+      height: 10px;
+      background: transparent;
+    }
+    ::-webkit-scrollbar-track {
+      background: linear-gradient(
+        45deg,
+        ${alpha(theme.palette.grey[100], 0.2)},
+        ${alpha(theme.palette.grey[200], 0.1)}
+      );
+      border-radius: 10px;
+      backdrop-filter: blur(10px);
+    }
+    ::-webkit-scrollbar-thumb {
+      background: linear-gradient(
+        180deg,
+        ${theme.palette.secondary.dark},
+        ${theme.palette.secondary.main}
+      );
+      border-radius: 10px;
+      border: 2px solid transparent;
+      background-clip: padding-box;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    ::-webkit-scrollbar-corner {
+      background: linear-gradient(135deg, ${alpha(theme.palette.grey[800], 0.9)}, transparent);
+      backdrop-filter: blur(5px);
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 20px;
+    }
+
+    :root {
+      touch-action: pan-x pan-y;
+      height: 100%;
+      --scroll-speed: 1;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      min-height: 100%;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      direction: ltr !important;
+      overscroll-behavior: contain;
+      margin: 0px !important;
+    }
+  `
+}
