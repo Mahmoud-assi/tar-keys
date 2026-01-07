@@ -1,16 +1,14 @@
-import { ThemeProvider, createTheme } from '@mui/material/styles'
+import { ThemeProvider, createTheme, CssBaseline } from '@mui/material'
 import { useMemo, type PropsWithChildren } from 'react'
 import { colorSchemes, typography, shadows, shape } from '@/theme/themePrimitives'
 import { Global } from '@emotion/react'
 import GlobalStyles from '@/theme/global'
-import { CssBaseline } from '@mui/material'
 
 export default function AppTheme({ children }: PropsWithChildren) {
   const theme = useMemo(() => {
     return createTheme({
-      // For more about CSS variables configuration, see https://mui.com/material-ui/customization/css-theme-variables/configuration/
       cssVariables: {
-        colorSchemeSelector: 'data-mui-color-scheme',
+        colorSchemeSelector: 'class',
         cssVarPrefix: '',
       },
       colorSchemes,
@@ -21,7 +19,7 @@ export default function AppTheme({ children }: PropsWithChildren) {
   }, [])
 
   return (
-    <ThemeProvider theme={theme} disableTransitionOnChange defaultMode="system">
+    <ThemeProvider theme={theme} noSsr disableTransitionOnChange defaultMode="system">
       <CssBaseline />
       <Global styles={GlobalStyles(theme)} />
       {children}

@@ -20,8 +20,8 @@ export default function GlobalStyles(theme: Theme) {
     ::-webkit-scrollbar-thumb {
       background: linear-gradient(
         180deg,
-        ${theme.palette.secondary.dark},
-        ${theme.palette.secondary.main}
+        ${alpha(theme.palette.grey[100], 0.2)},
+        ${alpha(theme.palette.grey[200], 0.1)}
       );
       border-radius: 10px;
       border: 2px solid transparent;

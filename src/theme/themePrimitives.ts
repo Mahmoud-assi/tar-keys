@@ -30,7 +30,6 @@ declare module '@mui/material/styles' {
 
 const defaultTheme = createTheme()
 
-// Updated to Violet/Indigo Theme based on the design
 export const brand = {
   50: 'hsl(258, 100%, 97%)',
   100: 'hsl(258, 100%, 94%)',
