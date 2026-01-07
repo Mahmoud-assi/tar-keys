@@ -30,17 +30,18 @@ declare module '@mui/material/styles' {
 
 const defaultTheme = createTheme()
 
+// Updated to Violet/Indigo Theme based on the design
 export const brand = {
-  50: 'hsl(210, 100%, 95%)',
-  100: 'hsl(210, 100%, 92%)',
-  200: 'hsl(210, 100%, 80%)',
-  300: 'hsl(210, 100%, 65%)',
-  400: 'hsl(210, 98%, 48%)',
-  500: 'hsl(210, 98%, 42%)',
-  600: 'hsl(210, 98%, 55%)',
-  700: 'hsl(210, 100%, 35%)',
-  800: 'hsl(210, 100%, 16%)',
-  900: 'hsl(210, 100%, 21%)',
+  50: 'hsl(258, 100%, 97%)',
+  100: 'hsl(258, 100%, 94%)',
+  200: 'hsl(258, 100%, 86%)',
+  300: 'hsl(258, 100%, 74%)',
+  400: 'hsl(258, 95%, 65%)',
+  500: 'hsl(258, 90%, 60%)',
+  600: 'hsl(258, 80%, 55%)',
+  700: 'hsl(258, 70%, 45%)',
+  800: 'hsl(258, 80%, 30%)',
+  900: 'hsl(258, 90%, 15%)',
 }
 
 export const gray = {
@@ -131,7 +132,7 @@ export const colorSchemes = {
       divider: alpha(gray[300], 0.4),
       background: {
         default: 'hsl(0, 0%, 99%)',
-        paper: 'hsl(220, 35%, 97%)',
+        paper: 'hsl(258, 20%, 98%)', // Subtle purple tint for paper
       },
       text: {
         primary: gray[800],
@@ -142,8 +143,9 @@ export const colorSchemes = {
         hover: alpha(gray[200], 0.2),
         selected: `${alpha(gray[200], 0.3)}`,
       },
+      // Updated shadow hue to match the Violet brand
       baseShadow:
-        'hsla(220, 30%, 5%, 0.07) 0px 4px 16px 0px, hsla(220, 25%, 10%, 0.07) 0px 8px 16px -5px',
+        'hsla(258, 40%, 10%, 0.07) 0px 4px 16px 0px, hsla(258, 30%, 15%, 0.07) 0px 8px 16px -5px',
     },
   },
   dark: {
@@ -180,8 +182,8 @@ export const colorSchemes = {
       },
       divider: alpha(gray[700], 0.6),
       background: {
-        default: gray[900],
-        paper: 'hsl(220, 30%, 7%)',
+        default: 'hsl(258, 20%, 5%)', // Deep purple-black tint
+        paper: 'hsl(258, 25%, 8%)',
       },
       text: {
         primary: 'hsl(0, 0%, 100%)',
@@ -191,8 +193,9 @@ export const colorSchemes = {
         hover: alpha(gray[600], 0.2),
         selected: alpha(gray[600], 0.3),
       },
+      // Updated shadow hue to match the Violet brand
       baseShadow:
-        'hsla(220, 30%, 5%, 0.7) 0px 4px 16px 0px, hsla(220, 25%, 10%, 0.8) 0px 8px 16px -5px',
+        'hsla(258, 40%, 10%, 0.7) 0px 4px 16px 0px, hsla(258, 30%, 15%, 0.8) 0px 8px 16px -5px',
     },
   },
 }
