@@ -31,16 +31,16 @@ declare module '@mui/material/styles' {
 const defaultTheme = createTheme()
 
 export const brand = {
-  50: 'hsl(258, 100%, 97%)',
-  100: 'hsl(258, 100%, 94%)',
-  200: 'hsl(258, 100%, 86%)',
-  300: 'hsl(258, 100%, 74%)',
-  400: 'hsl(258, 95%, 65%)',
-  500: 'hsl(258, 90%, 60%)',
-  600: 'hsl(258, 80%, 55%)',
-  700: 'hsl(258, 70%, 45%)',
-  800: 'hsl(258, 80%, 30%)',
-  900: 'hsl(258, 90%, 15%)',
+  50: 'hsl(229, 80%, 96%)',
+  100: 'hsl(229, 75%, 92%)',
+  200: 'hsl(229, 70%, 85%)',
+  300: 'hsl(229, 65%, 75%)',
+  400: 'hsl(229, 60%, 60%)',
+  500: 'hsl(229, 58%, 48%)', // #3347C1 (MAIN)
+  600: 'hsl(229, 60%, 42%)',
+  700: 'hsl(229, 65%, 34%)',
+  800: 'hsl(229, 70%, 24%)',
+  900: 'hsl(229, 75%, 14%)',
 }
 
 export const gray = {
@@ -67,6 +67,19 @@ export const green = {
   700: 'hsl(120, 75%, 16%)',
   800: 'hsl(120, 84%, 10%)',
   900: 'hsl(120, 87%, 6%)',
+}
+
+export const yellow = {
+  50: 'hsl(45, 100%, 97%)',
+  100: 'hsl(45, 100%, 90%)',
+  200: 'hsl(45, 100%, 80%)',
+  300: 'hsl(45, 100%, 70%)',
+  400: 'hsl(45, 100%, 60%)',
+  500: 'hsl(45, 99%, 59%)', // #FECE30 MAIN
+  600: 'hsl(45, 95%, 50%)',
+  700: 'hsl(45, 90%, 45%)',
+  800: 'hsl(45, 90%, 38%)',
+  900: 'hsl(45, 85%, 30%)',
 }
 
 export const orange = {
@@ -100,9 +113,15 @@ export const colorSchemes = {
     palette: {
       primary: {
         light: brand[200],
-        main: brand[400],
+        main: brand[500],
         dark: brand[700],
         contrastText: brand[50],
+      },
+      secondary: {
+        light: yellow[300],
+        main: yellow[500],
+        dark: yellow[700],
+        contrastText: '#000000',
       },
       info: {
         light: brand[100],
@@ -142,9 +161,7 @@ export const colorSchemes = {
         hover: alpha(gray[200], 0.2),
         selected: `${alpha(gray[200], 0.3)}`,
       },
-      // Updated shadow hue to match the Violet brand
-      baseShadow:
-        'hsla(258, 40%, 10%, 0.07) 0px 4px 16px 0px, hsla(258, 30%, 15%, 0.07) 0px 8px 16px -5px',
+      baseShadow: '0.5px 1px 0px 0px #FECE30, 0px 8px 24px rgba(51, 71, 193, 0.12)',
     },
   },
   dark: {
@@ -152,8 +169,14 @@ export const colorSchemes = {
       primary: {
         contrastText: brand[50],
         light: brand[300],
-        main: brand[400],
+        main: brand[500],
         dark: brand[700],
+      },
+      secondary: {
+        light: yellow[300],
+        main: yellow[500],
+        dark: yellow[700],
+        contrastText: '#000000',
       },
       info: {
         contrastText: brand[300],
@@ -181,8 +204,8 @@ export const colorSchemes = {
       },
       divider: alpha(gray[700], 0.6),
       background: {
-        default: 'hsl(258, 20%, 5%)', // Deep purple-black tint
-        paper: 'hsl(258, 25%, 8%)',
+        default: 'hsl(229, 30%, 6%)',
+        paper: 'hsl(229, 30%, 9%)',
       },
       text: {
         primary: 'hsl(0, 0%, 100%)',
@@ -192,9 +215,7 @@ export const colorSchemes = {
         hover: alpha(gray[600], 0.2),
         selected: alpha(gray[600], 0.3),
       },
-      // Updated shadow hue to match the Violet brand
-      baseShadow:
-        'hsla(258, 40%, 10%, 0.7) 0px 4px 16px 0px, hsla(258, 30%, 15%, 0.8) 0px 8px 16px -5px',
+      baseShadow: '0.5px 1px 0px 0px #FECE30, 0px 10px 30px rgba(0, 0, 0, 0.7)',
     },
   },
 }
@@ -230,7 +251,7 @@ export const typography = {
     fontWeight: 600,
   },
   subtitle1: {
-    fontSize: defaultTheme.typography.pxToRem(18),
+    fontSize: defaultTheme.typography.pxToRem(16),
   },
   subtitle2: {
     fontSize: defaultTheme.typography.pxToRem(14),

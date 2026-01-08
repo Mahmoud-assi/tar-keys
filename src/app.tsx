@@ -1,13 +1,15 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import { routesSection } from '@/router'
-import AppTheme from '@/providers/Theme'
+import { LocalizationProvider, ThemeProvider } from '@/providers'
 
 const router = createBrowserRouter(routesSection)
 
 export default function App() {
   return (
-    <AppTheme>
-      <RouterProvider router={router} />
-    </AppTheme>
+    <LocalizationProvider>
+      <ThemeProvider>
+        <RouterProvider router={router} />
+      </ThemeProvider>
+    </LocalizationProvider>
   )
 }

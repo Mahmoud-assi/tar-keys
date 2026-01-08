@@ -1,10 +1,15 @@
-import { ThemeProvider, createTheme, CssBaseline } from '@mui/material'
+import { ThemeProvider as MUIThemeProvider, createTheme, CssBaseline } from '@mui/material'
 import { useMemo, type PropsWithChildren } from 'react'
 import { colorSchemes, typography, shadows, shape } from '@/theme/themePrimitives'
 import { Global } from '@emotion/react'
 import GlobalStyles from '@/theme/global'
+import { useLocale } from './Localization'
+import { setFont } from '@/utils/font'
+import EmotionCacheProvider from './EmotionCacheProvider'
 
-export default function AppTheme({ children }: PropsWithChildren) {
+export function ThemeProvider({ children }: PropsWithChildren) {
+  const { locale } = useLocale()
+
   const theme = useMemo(() => {
     return createTheme({
       cssVariables: {
@@ -12,17 +17,23 @@ export default function AppTheme({ children }: PropsWithChildren) {
         cssVarPrefix: '',
       },
       colorSchemes,
-      typography,
+      direction: locale === 'ar' ? 'rtl' : 'rtl',
+      typography: {
+        ...typography,
+        fontFamily: setFont(locale === 'ar' ? 'Montserrat' : 'Poppins'),
+      },
       shadows,
       shape,
     })
-  }, [])
+  }, [locale])
 
   return (
-    <ThemeProvider theme={theme} noSsr disableTransitionOnChange defaultMode="system">
-      <CssBaseline />
-      <Global styles={GlobalStyles(theme)} />
-      {children}
-    </ThemeProvider>
+    <EmotionCacheProvider direction={locale === 'ar' ? 'rtl' : 'ltr'}>
+      <MUIThemeProvider theme={theme} noSsr disableTransitionOnChange defaultMode="light">
+        <CssBaseline />
+        <Global styles={GlobalStyles(theme, locale)} />
+        {children}
+      </MUIThemeProvider>
+    </EmotionCacheProvider>
   )
 }

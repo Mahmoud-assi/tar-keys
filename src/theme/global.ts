@@ -1,8 +1,16 @@
 import { css } from '@emotion/react'
 import { type Theme, alpha } from '@mui/material'
+import '@fontsource/noto-kufi-arabic/400.css'
+import '@fontsource/poppins/400.css'
+import type { LocaleType } from '@/types/custom'
+import { setFont } from '@/utils/font'
 
-export default function GlobalStyles(theme: Theme) {
+export default function GlobalStyles(theme: Theme, locale: LocaleType) {
   return css`
+    @font-face {
+      font-family: 'Montserrat';
+      src: url('/Montserrat-Arabic.ttf') format('truetype');
+    }
     ::-webkit-scrollbar {
       width: 10px;
       height: 10px;
@@ -11,7 +19,7 @@ export default function GlobalStyles(theme: Theme) {
     ::-webkit-scrollbar-track {
       background: linear-gradient(
         45deg,
-        ${alpha(theme.palette.grey[100], 0.2)},
+        ${alpha(theme.palette.grey[200], 0.5)},
         ${alpha(theme.palette.grey[200], 0.1)}
       );
       border-radius: 10px;
@@ -20,8 +28,8 @@ export default function GlobalStyles(theme: Theme) {
     ::-webkit-scrollbar-thumb {
       background: linear-gradient(
         180deg,
-        ${alpha(theme.palette.grey[100], 0.2)},
-        ${alpha(theme.palette.grey[200], 0.1)}
+        ${alpha(theme.palette.grey[500], 0.5)},
+        ${alpha(theme.palette.grey[600], 0.25)}
       );
       border-radius: 10px;
       border: 2px solid transparent;
@@ -31,7 +39,7 @@ export default function GlobalStyles(theme: Theme) {
       overflow: hidden;
     }
     ::-webkit-scrollbar-corner {
-      background: linear-gradient(135deg, ${alpha(theme.palette.grey[800], 0.9)}, transparent);
+      background: linear-gradient(135deg, ${alpha(theme.palette.grey[800], 0.5)}, transparent);
       backdrop-filter: blur(5px);
     }
 
@@ -58,6 +66,7 @@ export default function GlobalStyles(theme: Theme) {
       direction: ltr !important;
       overscroll-behavior: contain;
       margin: 0px !important;
+      font-family: ${setFont(locale === 'ar' ? 'Montserrat' : 'Poppins')};
     }
   `
 }
