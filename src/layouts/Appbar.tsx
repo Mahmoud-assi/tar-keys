@@ -16,6 +16,7 @@ import { useMemo } from 'react'
 import { useActiveSection } from '@/hooks/useActiveSection'
 import type { AppbarKey } from '@/types/custom'
 import AppbarNavItem from './AppbarNavItem'
+import { SvgColor } from '@/components/SvgColor'
 
 export default function Appbar() {
   const { formatMessage: f } = useIntl()
@@ -38,7 +39,10 @@ export default function Appbar() {
           <Stack direction="row" spacing={1} justifyContent="space-between" alignItems="center">
             <Stack direction="row" alignItems="center">
               <Box component="img" src="/images/logo.png" sx={{ width: 40, height: 40 }} />
-              <Box component="img" src="/images/tarkeys-header-text.png" />
+              <SvgColor
+                src="/icons/layout/logo-text-header.svg"
+                sx={{ width: 92, height: 48, color: 'primary.main' }}
+              />
             </Stack>
             <Stack
               direction="row"
