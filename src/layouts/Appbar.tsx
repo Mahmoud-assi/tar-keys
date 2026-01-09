@@ -29,7 +29,12 @@ export default function Appbar() {
 
   return (
     <AppbarRoot position="sticky" component="header" isOffset={isOffset}>
-      <Container maxWidth="xl">
+      <Container
+        maxWidth={false}
+        sx={{
+          px: { xs: 2, sm: 3, md: 4, lg: 5 },
+        }}
+      >
         <Box
           component={motion.div}
           initial="hidden"
@@ -69,7 +74,6 @@ export default function Appbar() {
                   sx={{
                     borderRadius: 10,
                     color: 'secondary.main',
-                    boxShadow: '0px 8px 8px 0px #0022FF29',
                   }}
                 >
                   {f({ id: 'contactSupport' })}
