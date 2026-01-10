@@ -68,6 +68,7 @@ export default function CardsSection() {
                 scale: 1.02,
               }}
               transition={{ type: 'spring', stiffness: 200, damping: 18 }}
+              sx={{ height: '100%' }}
             >
               <Stack
                 component={Card}
@@ -111,6 +112,8 @@ export default function CardsSection() {
           </Grid>
         ))}
       </Grid>
+
+      {/* UPDATED BLUE FADE #3347C1 */}
       <Box
         sx={{
           position: 'absolute',
@@ -121,7 +124,7 @@ export default function CardsSection() {
           height: { xs: 350, md: 500 },
           borderRadius: '50%',
           background:
-            'radial-gradient(circle, rgba(63, 131, 248, 0.15) 0%, rgba(255, 255, 255, 0) 70%)',
+            'radial-gradient(circle, rgba(51, 71, 193, 0.15) 0%, rgba(255, 255, 255, 0) 70%)',
           filter: 'blur(60px)',
           zIndex: -1,
           pointerEvents: 'none',
