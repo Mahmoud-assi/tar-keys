@@ -57,20 +57,60 @@ export default function HeroSection() {
           </Grid>
         </Stack>
       </Container>
+
+      {/* RED FADE (Top Left) - Color: #DC243C */}
       <Box
-        sx={{ position: 'absolute', left: 0, top: 0, width: 325, height: 325 }}
-        component="img"
-        src="/icons/layout/red-ellipse.svg"
+        sx={{
+          position: 'absolute',
+          left: 0,
+          top: 0,
+          width: 600,
+          height: 600,
+          borderRadius: '50%',
+          background:
+            'radial-gradient(circle, rgba(220, 36, 60, 0.15) 0%, rgba(255, 255, 255, 0) 70%)',
+          filter: 'blur(80px)',
+          zIndex: 0,
+          pointerEvents: 'none',
+          transform: 'translate(-25%, -25%)',
+        }}
       />
+
+      {/* GREEN FADE (Top Right) - Color: #1BC471 */}
       <Box
-        sx={{ position: 'absolute', top: 0, right: 0, width: 325, height: 325 }}
-        component="img"
-        src="/icons/layout/green-ellipse.svg"
+        sx={{
+          position: 'absolute',
+          top: 0,
+          right: 0,
+          width: 600,
+          height: 600,
+          borderRadius: '50%',
+          background:
+            'radial-gradient(circle, rgba(27, 196, 113, 0.15) 0%, rgba(255, 255, 255, 0) 70%)',
+          filter: 'blur(80px)',
+          zIndex: 0,
+          pointerEvents: 'none',
+          transform: 'translate(25%, -25%)',
+        }}
       />
+
+      {/* YELLOW FADE (Bottom Right) - Color: #FECE30 */}
+      {/* This connects to the next section */}
       <Box
-        sx={{ position: 'absolute', bottom: -325 / 2, right: 206, width: 325, height: 325 }}
-        component="img"
-        src="/icons/layout/yellow-ellipse.svg"
+        sx={{
+          position: 'absolute',
+          bottom: '-200px',
+          right: { xs: 0, md: 206 },
+          width: 600,
+          height: 600,
+          borderRadius: '50%',
+          background:
+            'radial-gradient(circle, rgba(254, 206, 48, 0.15) 0%, rgba(255, 255, 255, 0) 70%)',
+          filter: 'blur(80px)',
+          zIndex: 0,
+          pointerEvents: 'none',
+          transform: 'translate(25%, 25%)',
+        }}
       />
     </Box>
   )
