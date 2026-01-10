@@ -7,6 +7,7 @@ export default function HeroSection() {
 
   return (
     <Box
+      id="home"
       sx={{
         position: 'relative',
         width: '100%',
@@ -20,7 +21,7 @@ export default function HeroSection() {
           backgroundSize: '75% auto',
           backgroundRepeat: 'repeat-y',
           backgroundPosition: 'center',
-          opacity: 0.15,
+          opacity: 0.05,
           zIndex: 0,
           pointerEvents: 'none',
           transform: 'rotate(180deg)',
@@ -42,7 +43,7 @@ export default function HeroSection() {
         <Stack height="100%" width="100%" justifyContent="center">
           <Grid
             container
-            spacing={{ xs: 2, md: 5 }}
+            spacing={{ xs: 2, md: 3, lg: 4 }}
             direction={{ xs: 'column-reverse', md: 'row' }}
             justifyContent={{ xs: 'start', md: 'space-between' }}
             alignContent="center"
@@ -50,7 +51,7 @@ export default function HeroSection() {
             <Grid size={{ xs: 12, md: xm ? 6.75 : 6 }}>
               <FirstSection />
             </Grid>
-            <Grid size={{ xs: 12, md: xm ? 5.25 : 6 }} justifyContent="end" alignContent="end">
+            <Grid size={{ xs: 12, md: xm ? 5.25 : 6 }}>
               <SecondSection />
             </Grid>
           </Grid>

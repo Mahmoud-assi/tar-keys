@@ -94,7 +94,7 @@ export const appbarNavigations: {
   path: string
 }[] = [
   { title: 'home', path: '#home' },
-  { title: 'whyUs', path: '#whyUs' },
+  { title: 'whyUs', path: '#why-tarkeys' },
   { title: 'ourService', path: '#our-service' },
   { title: 'exploreTarkeys', path: '#explore-tarkeys' },
   { title: 'frequentlyQuestions', path: '#faq' },

@@ -1,4 +1,4 @@
-import { Box } from '@mui/material'
+import { Box, useMediaQuery } from '@mui/material'
 import { motion } from 'framer-motion'
 
 const imgBluePhone = '/images/hero-section/image2.png'
@@ -7,19 +7,21 @@ const imgPerson = '/images/hero-section/group.png'
 const imgCap = '/images/hero-section/group2.png'
 
 export default function SecondSection() {
+  const xm = useMediaQuery(theme => theme.breakpoints.between(900, 1200))
+
   return (
     <Box
       sx={{
         position: 'relative',
         width: '100%',
-        // maxWidth: 520,
-        // mx: 'auto',
-        // aspectRatio: { xs: '281 / 260', md: '420 / 430' },
+        height: '100%',
         display: 'flex',
         justifyContent: { xs: 'center', md: 'end' },
         alignItems: { xs: 'center', md: 'end' },
-        // overflow: 'hidden',
         userSelect: 'none',
+        // maxWidth: 520,
+        // mx: 'auto',
+        // aspectRatio: { xs: '281 / 260', md: '420 / 430' },
       }}
     >
       <Box
@@ -54,7 +56,7 @@ export default function SecondSection() {
           transition={{ duration: 1, ease: 'easeOut', delay: 0.15 }}
           sx={{
             position: 'absolute',
-            right: { xs: 87, md: 140 },
+            right: { xs: 87, md: xm ? 120 : 140 },
             bottom: 0,
             width: { xs: 134, md: 230 },
             zIndex: 2,
@@ -75,7 +77,7 @@ export default function SecondSection() {
           }}
           sx={{
             position: 'absolute',
-            left: { xs: 10, md: -40 },
+            left: { xs: 10, md: xm ? -20 : -35 },
             bottom: { xs: 10, md: 30 },
             width: { xs: 84, md: 140 },
             zIndex: 3,
@@ -98,7 +100,7 @@ export default function SecondSection() {
           }}
           sx={{
             position: 'absolute',
-            left: { xs: 10, md: -40 },
+            left: { xs: 10, md: xm ? -20 : -40 },
             top: 0,
             width: { xs: 109, md: 180 },
             zIndex: 4,
