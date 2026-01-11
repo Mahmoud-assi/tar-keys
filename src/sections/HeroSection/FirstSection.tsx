@@ -4,8 +4,8 @@ import { motion } from 'framer-motion'
 import { useIntl } from 'react-intl'
 import StatCard from './StatCard'
 
-const MotionStack = motion(Stack)
-const MotionTypography = motion(Typography)
+const MotionStack = motion.create(Stack)
+const MotionTypography = motion.create(Typography)
 
 export default function FirstSection() {
   const { formatMessage: f } = useIntl()
