@@ -1,3 +1,4 @@
+import ExploreTarkeys from '@/sections/Explore'
 import HeroSection from '@/sections/HeroSection'
 import OurServices from '@/sections/OurServices'
 import WhyTarkeys from '@/sections/WhyChooseUs'
@@ -9,6 +10,7 @@ export default function DashboardPage() {
       <HeroSection />
       <WhyTarkeys />
       <OurServices />
+      <ExploreTarkeys />
     </Stack>
   )
 }
