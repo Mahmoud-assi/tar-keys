@@ -1,6 +1,7 @@
 import ExploreTarkeys from '@/sections/Explore'
 import HeroSection from '@/sections/HeroSection'
 import OurServices from '@/sections/OurServices'
+import Reviews from '@/sections/Reviews'
 import WhyTarkeys from '@/sections/WhyChooseUs'
 import { Stack } from '@mui/material'
 
@@ -11,6 +12,7 @@ export default function DashboardPage() {
       <WhyTarkeys />
       <OurServices />
       <ExploreTarkeys />
+      <Reviews />
     </Stack>
   )
 }

@@ -97,8 +97,8 @@ export const appbarNavigations: {
   { title: 'whyUs', path: '#why-tarkeys' },
   { title: 'ourService', path: '#our-services' },
   { title: 'exploreTarkeys', path: '#explore-tarkeys' },
+  { title: 'views', path: '#reviews' },
   { title: 'frequentlyQuestions', path: '#faq' },
-  { title: 'views', path: '#views' },
 ]
 
 const AppbarRoot = styled(AppBar, {
@@ -109,10 +109,9 @@ const AppbarRoot = styled(AppBar, {
   alignItems: 'flex-end',
   top: 0,
   backgroundImage: 'none',
-  height: 56, // Fixed height
+  height: 56,
   width: '100%',
   color: 'inherit',
-  zIndex: 1200, // Ensure it is above content
   transition: theme.transitions.create(['box-shadow', 'background-color', 'backdrop-filter'], {
     easing: theme.transitions.easing.sharp,
     duration: theme.transitions.duration.enteringScreen,

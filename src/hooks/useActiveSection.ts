@@ -3,6 +3,8 @@ import { useState, useEffect } from 'react'
 export function useActiveSection(sectionIds: string[]) {
   const [activeSection, setActiveSection] = useState<string>('home')
 
+  console.log(activeSection)
+
   useEffect(() => {
     const handleScroll = () => {
       const scrollPosition = window.scrollY + 56

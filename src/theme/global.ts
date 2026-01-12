@@ -1,6 +1,5 @@
 import { css } from '@emotion/react'
 import { type Theme, alpha } from '@mui/material'
-import '@fontsource/noto-kufi-arabic/400.css'
 import '@fontsource/poppins/400.css'
 import type { LocaleType } from '@/types/custom'
 import { setFont } from '@/utils/font'

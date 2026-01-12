@@ -1,5 +1,5 @@
 import PageSection from '@/components/PageSection'
-import { Container, Stack, Typography } from '@mui/material'
+import { Box, Container, Stack, Typography } from '@mui/material'
 import { useIntl } from 'react-intl'
 import { motion } from 'framer-motion'
 import VideoPlayer from './Player'
@@ -14,7 +14,7 @@ export default function ExploreTarkeys() {
         {
           color: 'rgba(51, 71, 193, 0.15)',
           position: { top: 0, right: 0, transform: 'translate(25%, 10%)' },
-          sx: { width: { xs: 350, md: 500 }, height: { xs: 350, md: 500 } },
+          sx: { width: 350, height: 350 },
         },
         {
           color: 'rgba(220, 36, 60, 0.15)',
@@ -30,7 +30,7 @@ export default function ExploreTarkeys() {
       <Stack>
         <SectionHeader />
         <Container maxWidth="lg" sx={{ mx: 'auto', mt: { xs: 2, md: 3 } }}>
-          <VideoPlayer url="https://www.youtube.com/watch?v=iIIbs5vlwjE&list=RDyNvy_BHtYVE&index=2" />
+          <VideoPlayer />
         </Container>
       </Stack>
     </PageSection>
@@ -41,7 +41,8 @@ function SectionHeader() {
   const { formatMessage: f } = useIntl()
 
   return (
-    <motion.div
+    <Box
+      component={motion.div}
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, amount: 0.5 }}
@@ -51,7 +52,8 @@ function SectionHeader() {
       }}
     >
       <Stack spacing={1} alignItems="center">
-        <motion.div
+        <Box
+          component={motion.div}
           variants={{
             hidden: { opacity: 0, y: 20 },
             visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: 'easeOut' } },
@@ -65,8 +67,9 @@ function SectionHeader() {
           >
             {f({ id: 'learningPathTitle' })}
           </Typography>
-        </motion.div>
-        <motion.div
+        </Box>
+        <Box
+          component={motion.div}
           variants={{
             hidden: { opacity: 0, y: 20 },
             visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: 'easeOut' } },
@@ -75,8 +78,8 @@ function SectionHeader() {
           <Typography variant="body2" fontSize={{ xs: 16, md: 20 }}>
             {f({ id: 'learningPathSteps' })}
           </Typography>
-        </motion.div>
+        </Box>
       </Stack>
-    </motion.div>
+    </Box>
   )
 }
