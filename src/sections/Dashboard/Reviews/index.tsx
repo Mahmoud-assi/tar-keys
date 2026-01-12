@@ -12,8 +12,16 @@ const MotionTypography = motion.create(Typography)
 export default function Reviews() {
   const { formatMessage: f } = useIntl()
   const reviews = getReviewsByLocale('ar')
-  const [emblaRef] = useEmblaCarousel({ loop: true }, [
-    AutoScroll({ playOnInit: false, stopOnFocusIn: true, speed: 2, startDelay: 4 }),
+  const [emblaRef] = useEmblaCarousel({ loop: true, watchDrag: true, slidesToScroll: 'auto' }, [
+    AutoScroll({
+      playOnInit: true,
+      stopOnFocusIn: false,
+      stopOnInteraction: false,
+      stopOnMouseEnter: false,
+      speed: 1,
+      startDelay: 4,
+      direction: 'forward',
+    }),
   ])
   return (
     <PageSection
@@ -54,20 +62,34 @@ export default function Reviews() {
 
         <Box width="100%">
           <Grid container spacing={{ xs: 2, md: 3 }} alignItems="center">
-            <Grid size={{ xs: 12, md: 4 }}>
+            <Grid size={{ xs: 12, md: 3 }}>
               <Box
                 component="img"
                 src="/images/reviews/image.png"
                 sx={{ width: 342, height: 342 }}
               />
             </Grid>
-            <Grid size={{ xs: 12, md: 8 }}>
-              <Box dir="rtl" className="embla" sx={{ maxWidth: { xs: 325, md: 500, lg: 600 } }}>
+            <Grid size={{ xs: 12, md: 9 }}>
+              <Box
+                dir="rtl"
+                className="embla"
+                sx={
+                  {
+                    // maxWidth: {
+                    //   xs: '32rem',
+                    //   sm: '38rem',
+                    //   md: '45rem',
+                    //   lg: '52rem',
+                    // },
+                  }
+                }
+              >
                 <Box ref={emblaRef} className="embla__viewport">
                   <Box
                     className="embla__container"
                     sx={() => ({
                       direction: 'rtl',
+                      width: '100%',
                     })}
                   >
                     {reviews.map((review, idx) => (

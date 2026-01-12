@@ -30,7 +30,9 @@ export default function ReviewCard({ idx, name, comment, role, sx }: ReviewCardP
         p: 0,
         boxShadow: '0px 4px 16px 0px #00000014',
         gap: 0,
+        userSelect: 'none',
       }}
+      dir="rtl"
     >
       <Box sx={{ ...sx, height: 155, position: 'relative' }}>
         <SvgIcon

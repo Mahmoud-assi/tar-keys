@@ -24,7 +24,6 @@ export default function ScrollableCardSection({
       }}
     >
       {CARDS_DATA.map((d, idx) => {
-        // Z-Index: Card 1 on top (30), Card 3 at bottom (10)
         const zIndex = 30 - idx * 10
         return (
           <motion.div

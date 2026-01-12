@@ -68,24 +68,20 @@ export default function GlobalStyles(theme: Theme, locale: LocaleType) {
       font-family: ${setFont(locale === 'ar' ? 'Montserrat' : 'Poppins')};
     }
     .embla {
-      max-width: 48rem;
+      max-width: 100%;
       margin: auto;
-      --slide-height: 19rem;
       --slide-spacing: 1rem;
-      --slide-size: 45%;
     }
     .embla__viewport {
       overflow: hidden;
+      padding-bottom: 4px;
     }
     .embla__container {
       display: flex;
       touch-action: pan-y pinch-zoom;
-      margin-left: calc(var(--slide-spacing) * -1);
     }
     .embla__slide {
       transform: translate3d(0, 0, 0);
-      // flex: 0 0 var(--slide-size);
-      // min-width: 0;
       padding-left: var(--slide-spacing);
     }
   `
