@@ -15,7 +15,7 @@ export default function Reviews() {
   const reviews = getReviewsByLocale('ar')
   const [emblaRef] = useEmblaCarousel({ loop: true, watchDrag: true, slidesToScroll: 'auto' }, [
     AutoScroll({
-      playOnInit: false,
+      playOnInit: true,
       stopOnFocusIn: false,
       stopOnInteraction: false,
       stopOnMouseEnter: false,
