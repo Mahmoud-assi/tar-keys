@@ -20,6 +20,7 @@ import { useMemo, type ReactNode } from 'react'
 import { useIntl, type IntlShape } from 'react-intl'
 import AnimateButton from '@/components/AnimateButton'
 import { SvgColor } from '@/components/SvgColor'
+import routes from '@/router/routes'
 
 export default function Footer() {
   const { formatMessage: f } = useIntl()
@@ -36,8 +37,8 @@ export default function Footer() {
   const supportInfo = useMemo(
     () => [
       { label: f({ id: 'contactSupport' }), href: '' },
-      { label: f({ id: 'privacyPolicy' }), href: '/privacy-policy' },
-      { label: f({ id: 'termsOfUse' }), href: '/terms-of-use' },
+      { label: f({ id: 'privacyPolicy' }), href: routes.privacyPolicy },
+      { label: f({ id: 'termsOfUse' }), href: routes.termsOfuse },
     ],
     [f],
   )

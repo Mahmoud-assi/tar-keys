@@ -25,10 +25,7 @@
   "downloadVia": "Download via",
   "contactUsCTA": "Contact us and start your learning journey now",
   "joinTarkez": "Join Tarkez and start learning through courses specially designed for students.",
-  "subscriptionInfo": "To subscribe, simply contact our support team. We’ll help you choose the right course and activate your account easily.",
   "subscribe": "Subscribe",
-  "supportTeamReady": "Our support team is ready to answer all your questions and guide you step by step.",
-  "startLearningToday": "Start your learning journey today",
   "heroTitle": "Study smarter for the Baccalaureate and achieve better results with Tarkez",
   "heroDescription": "Tarkez helps you understand and memorize faster through interactive videos, while keeping your studies on track with a dedicated personal academic supervisor.",
   "yearsExperience": "Years of Teaching Experience",
@@ -99,5 +96,12 @@
   "termsSection5Title": "5. Intellectual Property",
   "termsSection5Content": "All content on the Tarkez platform, including but not limited to videos, text, graphics, logos, and software, is the property of Tarkez or its content providers and is protected by copyright and other intellectual property laws. You may not use, reproduce, or distribute any content from our platform without express written permission from Tarkez.",
   "termsContactTitle": "Contact Us",
-  "termsContactContent": "If you have any questions about these Terms of Use, please contact us at support@tarkeys.com or through our support channels. We are here to help and ensure you have a positive experience with Tarkez."
+  "termsContactContent": "If you have any questions about these Terms of Use, please contact us at support@tarkeys.com or through our support channels. We are here to help and ensure you have a positive experience with Tarkez.",
+  "startLearningToday": "Start your learning journey today",
+  "baccalaureateMessage": "The Baccalaureate is a challenging stage—you don't have to go through it alone. Join tens of thousands of students who benefited from Tarkez and achieved the results they dreamed of. Don't let anything stop you—you can do it!",
+  "contactForBest": "Contact us to get the best support",
+  "subscribeCTA": "To subscribe,",
+  "subscriptionInfo": "All you need to do is contact our support team, and we’ll help you choose the right course and activate your account easily.",
+  "supportTeamReady": "Our support team is ready to answer all your questions and guide you step by step.",
+  "contactAndStart": "Contact us and start your learning journey now"
 }

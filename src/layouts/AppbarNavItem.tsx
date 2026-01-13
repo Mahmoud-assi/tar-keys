@@ -1,8 +1,10 @@
 import AnimateButton from '@/components/AnimateButton'
 import { useRouter } from '@/hooks/useRouter'
+import routes from '@/router/routes'
 import type { AppbarKey } from '@/types/custom'
 import { Button } from '@mui/material'
 import { useIntl } from 'react-intl'
+import { useLocation } from 'react-router-dom'
 
 interface AppbarNavItemProps {
   item: { title: AppbarKey; path: string }
@@ -12,18 +14,22 @@ interface AppbarNavItemProps {
 export default function AppbarNavItem({ item, isActive }: AppbarNavItemProps) {
   const { formatMessage: f } = useIntl()
   const { replace } = useRouter()
+  const { pathname } = useLocation()
 
   const handleClick = () => {
     const sectionId = item.path.replace('#', '')
-    const element = document.getElementById(sectionId)
-    if (element) {
-      const topPos = element.getBoundingClientRect().top + window.pageYOffset
-      const offset = 56
-      window.scrollTo({
-        top: topPos - offset,
-        behavior: 'smooth',
-      })
-      replace(item.path)
+    if (pathname !== routes.home) replace(`/#${sectionId}`)
+    else {
+      const element = document.getElementById(sectionId)
+      if (element) {
+        const topPos = element.getBoundingClientRect().top + window.pageYOffset
+        const offset = 56
+        window.scrollTo({
+          top: topPos - offset,
+          behavior: 'smooth',
+        })
+        replace(item.path)
+      }
     }
   }
 
