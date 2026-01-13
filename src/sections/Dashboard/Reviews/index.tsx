@@ -8,21 +8,23 @@ import ReviewCard from './ReviewCard'
 import { getReviewsByLocale } from './_mock'
 
 const MotionTypography = motion.create(Typography)
+const MotionImg = motion.create('img')
 
 export default function Reviews() {
   const { formatMessage: f } = useIntl()
   const reviews = getReviewsByLocale('ar')
   const [emblaRef] = useEmblaCarousel({ loop: true, watchDrag: true, slidesToScroll: 'auto' }, [
     AutoScroll({
-      playOnInit: true,
+      playOnInit: false,
       stopOnFocusIn: false,
       stopOnInteraction: false,
       stopOnMouseEnter: false,
-      speed: 1,
+      speed: 0.5,
       startDelay: 4,
       direction: 'forward',
     }),
   ])
+
   return (
     <PageSection
       id="reviews"
@@ -63,26 +65,56 @@ export default function Reviews() {
         <Box width="100%">
           <Grid container spacing={{ xs: 2, md: 3 }} alignItems="center">
             <Grid size={{ xs: 12, md: 3 }}>
-              <Box
-                component="img"
+              <MotionImg
                 src="/images/reviews/image.png"
-                sx={{ width: 342, height: 342 }}
+                style={{ width: 342, height: 342 }}
+                initial={{ opacity: 0, scale: 1 }}
+                whileInView={{ opacity: 1 }}
+                viewport={{ once: true, amount: 0.5 }}
+                animate={{ scale: [1, 1.03, 1] }}
+                transition={{
+                  opacity: {
+                    duration: 0.6,
+                    ease: 'easeOut',
+                  },
+                  scale: {
+                    duration: 6,
+                    ease: 'easeInOut',
+                    repeat: Infinity,
+                    delay: 0.6,
+                  },
+                }}
               />
             </Grid>
             <Grid size={{ xs: 12, md: 9 }}>
               <Box
                 dir="rtl"
                 className="embla"
-                sx={
-                  {
-                    // maxWidth: {
-                    //   xs: '32rem',
-                    //   sm: '38rem',
-                    //   md: '45rem',
-                    //   lg: '52rem',
-                    // },
-                  }
-                }
+                sx={{
+                  position: 'relative',
+                  '&::before': {
+                    content: '""',
+                    position: 'absolute',
+                    top: 0,
+                    right: 0,
+                    width: 50,
+                    height: '100%',
+                    background: 'linear-gradient(to left, #F5FBFD, rgba(255,255,255,0))',
+                    zIndex: 2,
+                    pointerEvents: 'none',
+                  },
+                  '&::after': {
+                    content: '""',
+                    position: 'absolute',
+                    top: 0,
+                    left: 0,
+                    width: 50,
+                    height: '100%',
+                    background: 'linear-gradient(to right, #F5FBFD, rgba(255,255,255,0))',
+                    zIndex: 2,
+                    pointerEvents: 'none',
+                  },
+                }}
               >
                 <Box ref={emblaRef} className="embla__viewport">
                   <Box

@@ -41,14 +41,7 @@ const PageSection = forwardRef<HTMLDivElement, PageSectionProps>(
         sx={{
           position: 'relative',
           width: '100%',
-          minHeight: 'calc(100dvh - 56px)',
           overflow: 'hidden',
-          /* 
-             BACKGROUND IMAGE LOGIC 
-             1. Uses the `bgImage` url.
-             2. Uses `bgRotation` to rotate the pattern (e.g., rotate(-180deg)).
-             3. Uses `bgRepeat: repeat` to tile the image.
-          */
           '&::before': {
             content: '""',
             position: 'absolute',
@@ -58,7 +51,7 @@ const PageSection = forwardRef<HTMLDivElement, PageSectionProps>(
             backgroundRepeat: 'repeat',
             backgroundPosition: 'center center',
             opacity: bgOpacity,
-            zIndex: 0,
+            zIndex: 10,
             pointerEvents: 'none',
             transform: bgRotation,
           },
@@ -74,7 +67,7 @@ const PageSection = forwardRef<HTMLDivElement, PageSectionProps>(
             height: '100%',
             display: 'flex',
             alignItems: 'center',
-            py: 5,
+            py: 10,
             px: { xs: 2, sm: 3, md: 4, lg: 5 },
           }}
         >
@@ -82,8 +75,6 @@ const PageSection = forwardRef<HTMLDivElement, PageSectionProps>(
             {children}
           </Stack>
         </Container>
-
-        {/* Render Fades with fixed Type Logic */}
         {fades.map((fade, index) => (
           <Box
             key={index}
