@@ -107,7 +107,7 @@ export default function Reviews() {
                     content: '""',
                     position: 'absolute',
                     top: 0,
-                    left: 0,
+                    left: -4,
                     width: 50,
                     height: '100%',
                     background: 'linear-gradient(to right, #F5FBFD, rgba(255,255,255,0))',
@@ -116,7 +116,7 @@ export default function Reviews() {
                   },
                 }}
               >
-                <Box ref={emblaRef} className="embla__viewport">
+                <Box ref={emblaRef} className="embla__viewport" sx={{ height: 350 }}>
                   <Box
                     className="embla__container"
                     sx={() => ({

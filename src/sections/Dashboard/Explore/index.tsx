@@ -29,7 +29,7 @@ export default function ExploreTarkeys() {
     >
       <Stack>
         <SectionHeader />
-        <Container maxWidth="lg" sx={{ mx: 'auto', mt: { xs: 2, md: 3 } }}>
+        <Container maxWidth="lg" sx={{ mx: 'auto', mt: { xs: 2, md: 3 }, px: { xs: 0 } }}>
           <VideoPlayer />
         </Container>
       </Stack>
@@ -64,6 +64,7 @@ function SectionHeader() {
             fontSize={{ xs: 28, md: 32 }}
             color="primary"
             sx={{ filter: 'drop-shadow(0.5px 1px 0px var(--palette-secondary-main))' }}
+            textAlign="center"
           >
             {f({ id: 'learningPathTitle' })}
           </Typography>

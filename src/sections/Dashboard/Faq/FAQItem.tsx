@@ -1,4 +1,4 @@
-import { IconButton, Stack, Typography } from '@mui/material'
+import { Card, IconButton, Stack, Typography } from '@mui/material'
 import { ExpandMore } from '@mui/icons-material'
 import { AnimatePresence, motion } from 'framer-motion'
 
@@ -18,12 +18,11 @@ export default function FAQItem({
   const isExpanded = expandedIndex === index
 
   return (
-    <Stack
+    <Card
       sx={{
         width: '100%',
         px: 2,
         py: 1,
-        background: 'common.white',
         border: '1px solid',
         borderColor: '#F2F2F2',
         boxShadow: '0px 4px 16px 0px #00000014',
@@ -87,6 +86,6 @@ export default function FAQItem({
           </motion.div>
         )}
       </AnimatePresence>
-    </Stack>
+    </Card>
   )
 }

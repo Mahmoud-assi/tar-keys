@@ -42,6 +42,11 @@ const PageSection = forwardRef<HTMLDivElement, PageSectionProps>(
           position: 'relative',
           width: '100%',
           overflow: 'hidden',
+          minHeight: {
+            xs: 'auto',
+            md: '90svh',
+            lg: '80svh',
+          },
           '&::before': {
             content: '""',
             position: 'absolute',
@@ -67,7 +72,7 @@ const PageSection = forwardRef<HTMLDivElement, PageSectionProps>(
             height: '100%',
             display: 'flex',
             alignItems: 'center',
-            py: 10,
+            py: 5,
             px: { xs: 2, sm: 3, md: 4, lg: 5 },
           }}
         >

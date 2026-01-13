@@ -3,6 +3,7 @@ import {
   Avatar,
   Box,
   Card,
+  Rating,
   Stack,
   SvgIcon,
   Typography,
@@ -31,6 +32,8 @@ export default function ReviewCard({ idx, name, comment, role, sx }: ReviewCardP
         boxShadow: '0px 4px 16px 0px #00000014',
         gap: 0,
         userSelect: 'none',
+        position: 'relative',
+        overflow: 'visible',
       }}
       dir="rtl"
     >
@@ -76,6 +79,7 @@ export default function ReviewCard({ idx, name, comment, role, sx }: ReviewCardP
           <Avatar src={`/images/reviews/logo-card/${idx}.png`} sx={{ width: 90, height: 90 }} />
         </Box>
       </Box>
+
       <Stack height="100%" spacing={1} justifyContent="space-between" p={2}>
         <Box />
         <Typography variant="body1" sx={{ textAlign: 'center', fontWeight: 300 }}>
@@ -86,6 +90,35 @@ export default function ReviewCard({ idx, name, comment, role, sx }: ReviewCardP
           sx={{ color: 'primary.main', alignSelf: 'end' }}
         />
       </Stack>
+      <Box
+        sx={{
+          position: 'absolute',
+          bottom: -12,
+          left: '50%',
+          transform: 'translateX(-50%)',
+          backgroundColor: 'common.white',
+          borderRadius: 3,
+          px: 2.5,
+          py: 1,
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          boxShadow: '0px 4px 10px rgba(0,0,0,0.08)',
+          borderTop: '4px solid',
+          borderInline: '4px solid',
+          borderColor: '#E0E0E0',
+          zIndex: 20,
+          width: 'fit-content',
+        }}
+      >
+        <Rating
+          value={5}
+          readOnly
+          sx={{
+            fontSize: 18,
+          }}
+        />
+      </Box>
     </Stack>
   )
 }

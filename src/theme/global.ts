@@ -69,12 +69,12 @@ export default function GlobalStyles(theme: Theme, locale: LocaleType) {
     }
     .embla {
       max-width: 100%;
+      height: 100%;
       margin: auto;
       --slide-spacing: 1rem;
     }
     .embla__viewport {
       overflow: hidden;
-      padding-bottom: 4px;
     }
     .embla__container {
       display: flex;
