@@ -1,7 +1,7 @@
 import { Box, Stack, Typography } from '@mui/material'
 import { motion } from 'framer-motion'
 import { useIntl } from 'react-intl'
-import PageSection from '@/components/PageSection'
+import PageSection, { type FadeConfig } from '@/components/PageSection'
 
 const MotionTypography = motion.create(Typography)
 
@@ -10,7 +10,7 @@ const fadeUp = {
   visible: { opacity: 1, y: 0 },
 }
 
-export default function PrivacyPolicy() {
+export default function TermsOfUse() {
   const { formatMessage: f } = useIntl()
 
   return (
@@ -21,35 +21,29 @@ export default function PrivacyPolicy() {
       }}
     >
       <PageSection
-        bgImage="/images/our-services/bg.png"
-        bgRotation="rotate(-180deg)"
-        bgSize="25% auto"
-        fades={[
-          {
-            color: 'rgba(27, 196, 113, 0.15)',
-            position: {
-              top: -200,
-              left: 0,
-              transform: 'translate(-25%, -25%)',
+        bgImage="/images/hero-bg.png"
+        bgRotation="rotate(180deg)"
+        bgSize="75% auto"
+        fades={
+          [
+            {
+              color: 'rgba(220, 36, 60, 0.15)', // Red
+              position: { left: 0, top: 0, transform: 'translate(-25%, -25%)' },
             },
-          },
-          {
-            color: 'rgba(27, 196, 113, 0.15)',
-            position: {
-              top: '50%',
-              right: 0,
-              transform: 'translate(25%, -50%)',
+            {
+              color: 'rgba(27, 196, 113, 0.15)', // Green
+              position: { top: 0, right: 0, transform: 'translate(25%, -25%)' },
             },
-          },
-          {
-            color: 'rgba(220, 36, 60, 0.15)',
-            position: {
-              top: '50%',
-              left: 0,
-              transform: 'translate(-25%, -50%)',
+            {
+              color: 'rgba(254, 206, 48, 0.15)', // Yellow
+              position: {
+                bottom: '-200px',
+                right: { xs: 0, md: 206 },
+                transform: 'translate(25%, 25%)',
+              },
             },
-          },
-        ]}
+          ] as FadeConfig[]
+        }
         sx={{
           minHeight: 'calc(100dvh - 56px)',
           display: 'flex',
@@ -81,7 +75,7 @@ export default function PrivacyPolicy() {
             variants={fadeUp}
             transition={{ duration: 0.6 }}
           >
-            {f({ id: 'privacyPolicy' })}
+            {f({ id: 'termsOfUse' })}
           </MotionTypography>
 
           {/* Last Updated */}
@@ -96,7 +90,7 @@ export default function PrivacyPolicy() {
             variants={fadeUp}
             transition={{ duration: 0.6, delay: 0.1 }}
           >
-            {f({ id: 'privacyLastUpdated' })}
+            {f({ id: 'termsLastUpdated' })}
           </MotionTypography>
 
           {/* Introduction */}
@@ -112,7 +106,7 @@ export default function PrivacyPolicy() {
             variants={fadeUp}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            {f({ id: 'privacyIntroduction' })}
+            {f({ id: 'termsIntroduction' })}
           </MotionTypography>
 
           {/* Section 1 */}
@@ -130,7 +124,7 @@ export default function PrivacyPolicy() {
               variants={fadeUp}
               transition={{ duration: 0.6, delay: 0.3 }}
             >
-              {f({ id: 'privacySection1Title' })}
+              {f({ id: 'termsSection1Title' })}
             </MotionTypography>
             <MotionTypography
               variant="body1"
@@ -144,7 +138,7 @@ export default function PrivacyPolicy() {
               variants={fadeUp}
               transition={{ duration: 0.6, delay: 0.4 }}
             >
-              {f({ id: 'privacySection1Content' })}
+              {f({ id: 'termsSection1Content' })}
             </MotionTypography>
           </Box>
 
@@ -163,7 +157,7 @@ export default function PrivacyPolicy() {
               variants={fadeUp}
               transition={{ duration: 0.6, delay: 0.5 }}
             >
-              {f({ id: 'privacySection2Title' })}
+              {f({ id: 'termsSection2Title' })}
             </MotionTypography>
             <MotionTypography
               variant="body1"
@@ -177,7 +171,7 @@ export default function PrivacyPolicy() {
               variants={fadeUp}
               transition={{ duration: 0.6, delay: 0.6 }}
             >
-              {f({ id: 'privacySection2Content' })}
+              {f({ id: 'termsSection2Content' })}
             </MotionTypography>
           </Box>
 
@@ -196,7 +190,7 @@ export default function PrivacyPolicy() {
               variants={fadeUp}
               transition={{ duration: 0.6, delay: 0.7 }}
             >
-              {f({ id: 'privacySection3Title' })}
+              {f({ id: 'termsSection3Title' })}
             </MotionTypography>
             <MotionTypography
               variant="body1"
@@ -210,7 +204,7 @@ export default function PrivacyPolicy() {
               variants={fadeUp}
               transition={{ duration: 0.6, delay: 0.8 }}
             >
-              {f({ id: 'privacySection3Content' })}
+              {f({ id: 'termsSection3Content' })}
             </MotionTypography>
           </Box>
 
@@ -229,7 +223,7 @@ export default function PrivacyPolicy() {
               variants={fadeUp}
               transition={{ duration: 0.6, delay: 0.9 }}
             >
-              {f({ id: 'privacySection4Title' })}
+              {f({ id: 'termsSection4Title' })}
             </MotionTypography>
             <MotionTypography
               variant="body1"
@@ -243,7 +237,7 @@ export default function PrivacyPolicy() {
               variants={fadeUp}
               transition={{ duration: 0.6, delay: 1.0 }}
             >
-              {f({ id: 'privacySection4Content' })}
+              {f({ id: 'termsSection4Content' })}
             </MotionTypography>
           </Box>
 
@@ -262,7 +256,7 @@ export default function PrivacyPolicy() {
               variants={fadeUp}
               transition={{ duration: 0.6, delay: 1.1 }}
             >
-              {f({ id: 'privacySection5Title' })}
+              {f({ id: 'termsSection5Title' })}
             </MotionTypography>
             <MotionTypography
               variant="body1"
@@ -276,7 +270,7 @@ export default function PrivacyPolicy() {
               variants={fadeUp}
               transition={{ duration: 0.6, delay: 1.2 }}
             >
-              {f({ id: 'privacySection5Content' })}
+              {f({ id: 'termsSection5Content' })}
             </MotionTypography>
           </Box>
 
@@ -306,7 +300,7 @@ export default function PrivacyPolicy() {
               variants={fadeUp}
               transition={{ duration: 0.6, delay: 1.3 }}
             >
-              {f({ id: 'privacyContactTitle' })}
+              {f({ id: 'termsContactTitle' })}
             </MotionTypography>
             <MotionTypography
               variant="body1"
@@ -320,7 +314,7 @@ export default function PrivacyPolicy() {
               variants={fadeUp}
               transition={{ duration: 0.6, delay: 1.4 }}
             >
-              {f({ id: 'privacyContactContent' })}
+              {f({ id: 'termsContactContent' })}
             </MotionTypography>
           </Box>
         </Stack>
@@ -328,3 +322,4 @@ export default function PrivacyPolicy() {
     </Box>
   )
 }
+
