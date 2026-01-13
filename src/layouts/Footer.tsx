@@ -5,7 +5,7 @@ import {
   Container,
   Grid,
   IconButton,
-  Link,
+  Link as MuiLink,
   linkClasses,
   Stack,
   svgIconClasses,
@@ -15,6 +15,7 @@ import {
   type StackProps,
 } from '@mui/material'
 import CopyrightIcon from '@mui/icons-material/Copyright'
+import { Link } from 'react-router-dom'
 import { useMemo, type ReactNode } from 'react'
 import { useIntl, type IntlShape } from 'react-intl'
 import AnimateButton from '@/components/AnimateButton'
@@ -35,8 +36,8 @@ export default function Footer() {
   const supportInfo = useMemo(
     () => [
       { label: f({ id: 'contactSupport' }), href: '' },
-      { label: f({ id: 'privacyPolicy' }), href: '' },
-      { label: f({ id: 'termsOfUse' }), href: '' },
+      { label: f({ id: 'privacyPolicy' }), href: '/privacy-policy' },
+      { label: f({ id: 'termsOfUse' }), href: '/terms-of-use' },
     ],
     [f],
   )
@@ -204,7 +205,7 @@ function LinkColumn({
           key={index}
           sx={{
             cursor: 'pointer',
-            [`.${svgIconClasses.root}, span`]: {
+            [`.${svgIconClasses.root}, span, a`]: {
               color: 'var(--palette-common-white)',
               width: 16,
               height: 16,
@@ -216,7 +217,7 @@ function LinkColumn({
               transition: 'color .3s ease',
             },
             '&:hover': {
-              [`.${linkClasses.root}, .${svgIconClasses.root}, span`]: {
+              [`.${linkClasses.root}, .${svgIconClasses.root}, span, a`]: {
                 color: 'var(--palette-secondary-main)',
               },
             },
@@ -224,9 +225,17 @@ function LinkColumn({
         >
           {link?.icon && link?.icon}
           <AnimateButton type="slide" offset={1.25}>
-            <Link href={link.href} variant="caption">
-              {link.label}
-            </Link>
+            {link.href.startsWith('/') ? (
+              <Link to={link.href} style={{ textDecoration: 'none' }}>
+                <MuiLink component="span" variant="caption" sx={{ color: 'inherit' }}>
+                  {link.label}
+                </MuiLink>
+              </Link>
+            ) : (
+              <MuiLink href={link.href} variant="caption">
+                {link.label}
+              </MuiLink>
+            )}
           </AnimateButton>
         </Stack>
       ))}
