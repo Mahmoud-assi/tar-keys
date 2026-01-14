@@ -72,7 +72,7 @@ const PageSection = forwardRef<HTMLDivElement, PageSectionProps>(
             height: '100%',
             display: 'flex',
             alignItems: 'center',
-            py: 5,
+            // py: 5,
             px: { xs: 2, sm: 3, md: 4, lg: 5 },
           }}
         >

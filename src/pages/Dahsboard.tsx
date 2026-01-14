@@ -3,7 +3,7 @@ import Courses from '@/sections/Dashboard/Course'
 import ExploreTarkeys from '@/sections/Dashboard/Explore'
 import FAQ from '@/sections/Dashboard/Faq'
 import HeroSection from '@/sections/Dashboard/HeroSection'
-// import OurServices from '@/sections/Dashboard/OurServices'
+import OurServices from '@/sections/Dashboard/OurServices'
 import Reviews from '@/sections/Dashboard/Reviews'
 import WhyTarkeys from '@/sections/Dashboard/WhyChooseUs'
 import { Box } from '@mui/material'
@@ -25,10 +25,10 @@ export default function DashboardPage() {
   }, [hash])
 
   return (
-    <Box sx={{ position: 'relative', overflow: 'hidden' }}>
+    <Box>
       <HeroSection />
       <WhyTarkeys />
-      {/* <OurServices /> */}
+      <OurServices />
       <Courses />
       <ExploreTarkeys />
       <Reviews />

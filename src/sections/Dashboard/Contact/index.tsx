@@ -26,8 +26,13 @@ export default function Contact() {
   const isMobile = useMediaQuery(theme.breakpoints.down('md'))
 
   return (
-    <PageSection bgImage="/images/last/bg.png" bgRotation="rotate(-90deg)" bgSize="35% auto">
-      <MotionBox width="100%">
+    <PageSection
+      bgImage="/images/last/bg.png"
+      bgRotation="rotate(-90deg)"
+      bgSize="35% auto"
+      sx={{ height: { xs: 617, md: 200 } }}
+    >
+      <MotionBox width="100%" sx={{ display: 'flex', alignItems: 'center' }}>
         {isMobile ? (
           <MotionStack spacing={3} sx={{ alignItems: 'center' }} variants={containerVariants}>
             <MotionTypography

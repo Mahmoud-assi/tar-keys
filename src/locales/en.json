@@ -107,5 +107,6 @@
   "coursesTitle": "Discover Our Courses at Tarkez",
   "coursesDescription": "Educational materials – clear and comprehensive explanations – scientific quizzes to ensure retention",
   "currency": "{price} Syrian Pound",
-  "courses": "Courses"
+  "courses": "Courses",
+  "swipeToApply": "Swipe to Apply"
 }

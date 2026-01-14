@@ -37,86 +37,89 @@ export default function FAQ() {
           position: { left: '50%', top: '50%', transform: 'translate(-50%, -50%)' },
         },
       ]}
+      sx={{ height: 'auto', pt: 5 }}
     >
-      <Stack spacing={2} alignItems="center">
-        <MotionTypography
-          variant="subtitle1"
-          fontSize={{ xs: 28, md: 32 }}
-          color="primary"
-          sx={{
-            filter: 'drop-shadow(0.5px 1px 0px var(--palette-secondary-main))',
-          }}
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.4 }}
-          transition={{ duration: 0.8, ease: 'easeOut' }}
-        >
-          {f({ id: 'faqTitle' })}
-        </MotionTypography>
-        <MotionTypography
-          variant="subtitle1"
-          fontSize={{ xs: 14, md: 20 }}
-          textAlign="center"
-          sx={{ maxWidth: theme => ({ xs: '100%', md: theme.breakpoints.values.sm }) }}
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.4 }}
-          transition={{ duration: 0.8, ease: 'easeOut', delay: 0.2 }}
-        >
-          {f({ id: 'faqDescription' })}
-        </MotionTypography>
-      </Stack>
+      <Stack alignItems="center" justifyContent="center" height="100%">
+        <Stack spacing={2} alignItems="center">
+          <MotionTypography
+            variant="subtitle1"
+            fontSize={{ xs: 28, md: 32 }}
+            color="primary"
+            sx={{
+              filter: 'drop-shadow(0.5px 1px 0px var(--palette-secondary-main))',
+            }}
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.4 }}
+            transition={{ duration: 0.8, ease: 'easeOut' }}
+          >
+            {f({ id: 'faqTitle' })}
+          </MotionTypography>
+          <MotionTypography
+            variant="subtitle1"
+            fontSize={{ xs: 14, md: 20 }}
+            textAlign="center"
+            sx={{ maxWidth: theme => ({ xs: '100%', md: theme.breakpoints.values.sm }) }}
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.4 }}
+            transition={{ duration: 0.8, ease: 'easeOut', delay: 0.2 }}
+          >
+            {f({ id: 'faqDescription' })}
+          </MotionTypography>
+        </Stack>
 
-      <Box width="100%">
-        <Grid container spacing={{ xs: 2, md: 3 }}>
-          <Grid size={{ xs: 12, lg: 4 }} order={{ xs: 0, lg: 2 }}>
-            <Stack spacing={{ xs: 2, md: 3 }} alignItems="center">
-              <MotionImg
-                src="/images/faq/group.png"
-                alt="FAQ Illustration"
-                style={{ width: '100%', maxWidth: 300 }}
-                initial={{ opacity: 0, y: -20, scale: 0.9 }}
-                whileInView={{ opacity: 1, y: 0, scale: 1 }}
-                viewport={{ once: true, amount: 0.5 }}
-                transition={{
-                  duration: 0.8,
-                  ease: 'easeOut',
-                  type: 'spring',
-                  stiffness: 120,
-                  damping: 10,
-                }}
-                whileHover={{ scale: 1.05, y: -5 }}
-              />
-            </Stack>
-          </Grid>
-          <Grid size={{ xs: 12, lg: 4 }} order={{ xs: 1, lg: 1 }}>
-            <Stack spacing={{ xs: 2, md: 3 }}>
-              {firstHalf.map((faq, idx) => (
-                <FAQItem
-                  key={idx}
-                  {...faq}
-                  index={idx}
-                  expandedIndex={expandedIndex}
-                  handleToggle={handleToggle}
+        <Box width="100%">
+          <Grid container spacing={{ xs: 2, md: 3 }}>
+            <Grid size={{ xs: 12, lg: 4 }} order={{ xs: 0, lg: 2 }}>
+              <Stack spacing={{ xs: 2, md: 3 }} alignItems="center">
+                <MotionImg
+                  src="/images/faq/group.png"
+                  alt="FAQ Illustration"
+                  style={{ width: '100%', maxWidth: 300 }}
+                  initial={{ opacity: 0, y: -20, scale: 0.9 }}
+                  whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                  viewport={{ once: true, amount: 0.5 }}
+                  transition={{
+                    duration: 0.8,
+                    ease: 'easeOut',
+                    type: 'spring',
+                    stiffness: 120,
+                    damping: 10,
+                  }}
+                  whileHover={{ scale: 1.05, y: -5 }}
                 />
-              ))}
-            </Stack>
+              </Stack>
+            </Grid>
+            <Grid size={{ xs: 12, lg: 4 }} order={{ xs: 1, lg: 1 }}>
+              <Stack spacing={{ xs: 2, md: 3 }}>
+                {firstHalf.map((faq, idx) => (
+                  <FAQItem
+                    key={idx}
+                    {...faq}
+                    index={idx}
+                    expandedIndex={expandedIndex}
+                    handleToggle={handleToggle}
+                  />
+                ))}
+              </Stack>
+            </Grid>
+            <Grid size={{ xs: 12, lg: 4 }} order={{ xs: 2, lg: 3 }}>
+              <Stack spacing={{ xs: 2, md: 3 }}>
+                {secondHalf.map((faq, idx) => (
+                  <FAQItem
+                    key={idx + 5}
+                    {...faq}
+                    index={idx + 5}
+                    expandedIndex={expandedIndex}
+                    handleToggle={handleToggle}
+                  />
+                ))}
+              </Stack>
+            </Grid>
           </Grid>
-          <Grid size={{ xs: 12, lg: 4 }} order={{ xs: 2, lg: 3 }}>
-            <Stack spacing={{ xs: 2, md: 3 }}>
-              {secondHalf.map((faq, idx) => (
-                <FAQItem
-                  key={idx + 5}
-                  {...faq}
-                  index={idx + 5}
-                  expandedIndex={expandedIndex}
-                  handleToggle={handleToggle}
-                />
-              ))}
-            </Stack>
-          </Grid>
-        </Grid>
-      </Box>
+        </Box>
+      </Stack>
     </PageSection>
   )
 }

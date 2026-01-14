@@ -9,7 +9,6 @@ export default function ExploreTarkeys() {
     <PageSection
       bgImage="/images/explore/bg.png"
       bgRotation="rotate(90deg)"
-      id="explore-tarkeys"
       fades={[
         {
           color: 'rgba(51, 71, 193, 0.15)',
@@ -26,8 +25,9 @@ export default function ExploreTarkeys() {
           sx: { width: { xs: 350, md: 500 }, height: { xs: 350, md: 500 } },
         },
       ]}
+      sx={{ height: { xs: 'auto', md: 600 } }}
     >
-      <Stack>
+      <Stack alignItems="center" justifyContent="center" height="100%" id="explore-tarkeys">
         <SectionHeader />
         <Container maxWidth="lg" sx={{ mx: 'auto', mt: { xs: 2, md: 3 }, px: { xs: 0 } }}>
           <VideoPlayer />

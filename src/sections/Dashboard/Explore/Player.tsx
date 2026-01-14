@@ -11,7 +11,7 @@ export default function VideoPlayer() {
       component={Card}
       position="relative"
       sx={{
-        height: { xs: 200, md: 450 },
+        height: { xs: 200, sm: 275, md: 325, lg: 450 },
         borderRadius: 3,
         boxShadow: '0px 4px 16px 0px #00000014',
         overflow: 'hidden',
