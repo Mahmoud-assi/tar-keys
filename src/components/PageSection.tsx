@@ -45,7 +45,7 @@ const PageSection = forwardRef<HTMLDivElement, PageSectionProps>(
           minHeight: {
             xs: 'auto',
             md: '90svh',
-            lg: '80svh',
+            lg: 'calc(100dvh - 56px)',
           },
           '&::before': {
             content: '""',
