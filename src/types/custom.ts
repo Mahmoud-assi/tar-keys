@@ -7,3 +7,4 @@ export type AppbarKey =
   | 'exploreTarkeys'
   | 'frequentlyQuestions'
   | 'views'
+  | 'courses'

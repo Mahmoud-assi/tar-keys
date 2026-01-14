@@ -113,10 +113,11 @@ export default function Contact() {
                 {f({ id: 'supportTeamReady' })}
               </MotionTypography>
             </MotionStack>
-            <AnimateButton>
+            <AnimateButton sx={{ width: '100%' }}>
               <Button
                 size="medium"
                 variant="contained"
+                fullWidth
                 sx={{
                   borderRadius: 3,
                   color: 'secondary.main',
@@ -201,10 +202,11 @@ export default function Contact() {
                 >
                   {f({ id: 'supportTeamReady' })}
                 </MotionTypography>
-                <AnimateButton>
+                <AnimateButton sx={{ width: '100%' }}>
                   <Button
                     size="large"
                     variant="contained"
+                    fullWidth
                     sx={{
                       borderRadius: 3,
                       color: 'secondary.main',

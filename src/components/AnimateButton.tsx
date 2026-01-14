@@ -1,5 +1,6 @@
 import React from 'react'
 import { motion, useCycle } from 'framer-motion'
+import { Box, type BoxProps } from '@mui/material'
 
 type AnimateButtonType = 'slide' | 'scale' | 'rotate'
 type AnimateDirection = 'up' | 'down' | 'left' | 'right'
@@ -9,7 +10,7 @@ interface ScaleConfig {
   tap: number
 }
 
-interface AnimateButtonProps {
+interface AnimateButtonProps extends Partial<BoxProps> {
   children: React.ReactNode
   type?: AnimateButtonType
   direction?: AnimateDirection
@@ -23,6 +24,7 @@ export default function AnimateButton({
   direction = 'right',
   offset = 10,
   scale = { hover: 1.05, tap: 0.954 },
+  ...props
 }: AnimateButtonProps) {
   let offset1: number
   let offset2: number
@@ -83,9 +85,14 @@ export default function AnimateButton({
     case 'scale':
     default:
       return (
-        <motion.div whileHover={{ scale: scaleProps?.hover }} whileTap={{ scale: scaleProps?.tap }}>
+        <Box
+          component={motion.div}
+          whileHover={{ scale: scaleProps?.hover }}
+          whileTap={{ scale: scaleProps?.tap }}
+          {...props}
+        >
           {children}
-        </motion.div>
+        </Box>
       )
   }
 }

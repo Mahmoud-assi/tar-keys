@@ -30,7 +30,7 @@ export default function FAQ() {
       fades={[
         {
           color: 'rgba(220, 36, 60, 0.15)',
-          position: { left: 0, top: 0, transform: 'translate(-40%, 25%)' },
+          position: { left: 0, top: 0, transform: 'translate(-40%, 0%)' },
         },
         {
           color: 'rgba(27, 196, 113, 0.15)',

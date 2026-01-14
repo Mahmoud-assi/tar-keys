@@ -96,6 +96,7 @@ export const appbarNavigations: {
   { title: 'home', path: '#home' },
   { title: 'whyUs', path: '#why-tarkeys' },
   { title: 'ourService', path: '#our-services' },
+  { title: 'courses', path: '#courses' },
   { title: 'exploreTarkeys', path: '#explore-tarkeys' },
   { title: 'views', path: '#reviews' },
   { title: 'frequentlyQuestions', path: '#faq' },

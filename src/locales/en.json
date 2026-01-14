@@ -103,5 +103,9 @@
   "subscribeCTA": "To subscribe,",
   "subscriptionInfo": "All you need to do is contact our support team, and we’ll help you choose the right course and activate your account easily.",
   "supportTeamReady": "Our support team is ready to answer all your questions and guide you step by step.",
-  "contactAndStart": "Contact us and start your learning journey now"
+  "contactAndStart": "Contact us and start your learning journey now",
+  "coursesTitle": "Discover Our Courses at Tarkez",
+  "coursesDescription": "Educational materials – clear and comprehensive explanations – scientific quizzes to ensure retention",
+  "currency": "{price} Syrian Pound",
+  "courses": "Courses"
 }
