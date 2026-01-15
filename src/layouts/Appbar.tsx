@@ -12,20 +12,18 @@ import {
 } from '@mui/material'
 import { useIntl } from 'react-intl'
 import { motion } from 'framer-motion'
-import { useMemo, useState } from 'react'
+import { useMemo } from 'react'
 import { useActiveSection } from '@/hooks/useActiveSection'
 import type { AppbarKey } from '@/types/custom'
 import AppbarNavItem from './AppbarNavItem'
 import { SvgColor } from '@/components/SvgColor'
 import MenuToggle from './MenuToggle'
 
-export default function Appbar() {
+export default function Appbar({ isOpen, toggle }: { isOpen: boolean; toggle: () => void }) {
   const { formatMessage: f } = useIntl()
   const { offsetTop: isOffset } = useScrollOffsetTop()
-  const [isOpen, setIsOpen] = useState(false)
   const sectionIds = useMemo(() => appbarNavigations.map(item => item.path.replace('#', '')), [])
   const activeSection = useActiveSection(sectionIds)
-  const handleToggle = () => setIsOpen(prev => !prev)
 
   return (
     <AppbarRoot position="sticky" component="header" isOffset={isOffset}>
@@ -45,19 +43,23 @@ export default function Appbar() {
           }}
         >
           <Stack direction="row" spacing={1} justifyContent="space-between" alignItems="center">
-            <Stack direction="row" alignItems="center" maxWidth={132}>
-              <Box component="img" src="/images/logo.png" sx={{ width: 40, height: 40 }} />
-              <SvgColor
-                src="/icons/layout/logo-text-header.svg"
-                sx={{ width: 92, height: 48, color: 'primary.main' }}
-              />
+            <Stack direction="row" alignItems="center" spacing={1}>
+              <MenuToggle toggle={toggle} isOpen={isOpen} />
+              <Stack direction="row" alignItems="center" maxWidth={132}>
+                <Box component="img" src="/images/logo.png" sx={{ width: 40, height: 40 }} />
+                <SvgColor
+                  src="/icons/layout/logo-text-header.svg"
+                  sx={{ width: 92, height: 48, color: 'primary.main' }}
+                />
+              </Stack>
             </Stack>
+
             <Stack
               direction="row"
               alignItems="center"
               spacing={2}
               sx={{
-                '@media (max-width: 992px)': {
+                '@media (max-width: 1200px)': {
                   display: 'none',
                 },
               }}
@@ -79,7 +81,6 @@ export default function Appbar() {
                   {f({ id: 'contactSupport' })}
                 </Button>
               </AnimateButton>
-              <MenuToggle toggle={handleToggle} isOpen={isOpen} />
             </Stack>
           </Stack>
         </Box>

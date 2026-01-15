@@ -25,7 +25,6 @@ export default function ExploreTarkeys() {
           sx: { width: { xs: 350, md: 500 }, height: { xs: 350, md: 500 } },
         },
       ]}
-      sx={{ height: { xs: 'auto', md: 600 } }}
     >
       <Stack alignItems="center" justifyContent="center" height="100%" id="explore-tarkeys">
         <SectionHeader />

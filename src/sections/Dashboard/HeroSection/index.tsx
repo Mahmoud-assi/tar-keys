@@ -33,7 +33,7 @@ export default function HeroSection() {
           },
         ] as FadeConfig[]
       }
-      sx={{ height: 700 }}
+      sx={{ height: 'calc(100dvh - 56px)', minHeight: 'calc(100dvh - 56px)' }}
     >
       <Stack alignItems="center" justifyContent="center" height="100%">
         <Grid
@@ -43,10 +43,10 @@ export default function HeroSection() {
           justifyContent={{ xs: 'start', md: 'space-between' }}
           alignContent="center"
         >
-          <Grid size={{ xs: 12, md: xm ? 6.75 : 6 }}>
+          <Grid size={{ xs: 12, md: xm ? 6.75 : 6.5, lg: 7 }}>
             <FirstSection />
           </Grid>
-          <Grid size={{ xs: 12, md: xm ? 5.25 : 6 }}>
+          <Grid size={{ xs: 12, md: xm ? 5.25 : 5.5, lg: 5 }}>
             <SecondSection />
           </Grid>
         </Grid>

@@ -19,7 +19,7 @@ export default function ScrollableCardSection({
       sx={{
         width: '100%',
         maxWidth: 1200,
-        height: 600,
+        height: { xs: 600, md: 500 },
         position: 'relative',
       }}
     >

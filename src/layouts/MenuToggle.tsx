@@ -8,9 +8,11 @@ export default function MenuToggle({ toggle, isOpen }: { toggle: () => void; isO
       sx={{
         width: 40,
         height: 40,
-        '@media (min-width: 992px)': {
+        position: 'relative',
+        '@media (min-width: 1200px)': {
           display: 'none',
         },
+        zIndex: theme => theme.zIndex.drawer + 1,
       }}
     >
       <Box

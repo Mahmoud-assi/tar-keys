@@ -20,7 +20,11 @@ export default function OurServices() {
   const scale = useTransform(smoothProgress, [0, 0.5, 1], [1, 1.05, 1])
 
   return (
-    <Box id="our-services" ref={containerRef} sx={{ height: '400vh', position: 'relative' }}>
+    <Box
+      id="our-services"
+      ref={containerRef}
+      sx={{ height: { xs: 1800, md: 1500 }, position: 'relative' }}
+    >
       <PageSection
         bgImage="/images/our-services/bg.png"
         bgRotation="rotate(-180deg)"
@@ -58,8 +62,6 @@ export default function OurServices() {
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
-          minHeight: { xs: 'auto', lg: 'calc(100dvh - 56px)' },
-          pt: 5,
         }}
       >
         <Stack spacing={6} justifyContent="center" alignItems="center" width="100%" zIndex={10}>

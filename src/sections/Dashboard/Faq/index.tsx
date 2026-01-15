@@ -1,5 +1,5 @@
 import PageSection from '@/components/PageSection'
-import { Box, Grid, Stack, Typography } from '@mui/material'
+import { Box, Grid, Stack, Typography, useMediaQuery } from '@mui/material'
 import { motion } from 'framer-motion'
 import { useIntl } from 'react-intl'
 import { getFAQByLocale } from './_mock'
@@ -11,6 +11,7 @@ const MotionTypography = motion.create(Typography)
 const MotionImg = motion.create('img')
 
 export default function FAQ() {
+  const md = useMediaQuery(theme => theme.breakpoints.between('md', 'lg'))
   const { formatMessage: f, locale } = useIntl()
   const [expandedIndex, setExpandedIndex] = useState<number | null>(null)
   const faqs = getFAQByLocale(locale as LocaleType)
@@ -37,9 +38,8 @@ export default function FAQ() {
           position: { left: '50%', top: '50%', transform: 'translate(-50%, -50%)' },
         },
       ]}
-      sx={{ height: 'auto', pt: 5 }}
     >
-      <Stack alignItems="center" justifyContent="center" height="100%">
+      <Stack alignItems="center" justifyContent="center" height="100%" spacing={{ xs: 2, md: 3 }}>
         <Stack spacing={2} alignItems="center">
           <MotionTypography
             variant="subtitle1"
@@ -92,30 +92,32 @@ export default function FAQ() {
               </Stack>
             </Grid>
             <Grid size={{ xs: 12, lg: 4 }} order={{ xs: 1, lg: 1 }}>
-              <Stack spacing={{ xs: 2, md: 3 }}>
-                {firstHalf.map((faq, idx) => (
-                  <FAQItem
-                    key={idx}
-                    {...faq}
-                    index={idx}
-                    expandedIndex={expandedIndex}
-                    handleToggle={handleToggle}
-                  />
+              <Grid container spacing={{ xs: 2, md: 3 }}>
+                {(md ? firstHalf.slice(0, 4) : firstHalf).map((faq, idx) => (
+                  <Grid size={{ xs: 12, md: 6, lg: 12 }} key={idx}>
+                    <FAQItem
+                      {...faq}
+                      index={idx}
+                      expandedIndex={expandedIndex}
+                      handleToggle={handleToggle}
+                    />
+                  </Grid>
                 ))}
-              </Stack>
+              </Grid>
             </Grid>
             <Grid size={{ xs: 12, lg: 4 }} order={{ xs: 2, lg: 3 }}>
-              <Stack spacing={{ xs: 2, md: 3 }}>
-                {secondHalf.map((faq, idx) => (
-                  <FAQItem
-                    key={idx + 5}
-                    {...faq}
-                    index={idx + 5}
-                    expandedIndex={expandedIndex}
-                    handleToggle={handleToggle}
-                  />
+              <Grid container spacing={{ xs: 2, md: 3 }}>
+                {(md ? secondHalf.slice(0, 4) : secondHalf).map((faq, idx) => (
+                  <Grid size={{ xs: 12, md: 6, lg: 12 }} key={`second-${idx}`}>
+                    <FAQItem
+                      {...faq}
+                      index={idx + 1}
+                      expandedIndex={expandedIndex}
+                      handleToggle={handleToggle}
+                    />
+                  </Grid>
                 ))}
-              </Stack>
+              </Grid>
             </Grid>
           </Grid>
         </Box>

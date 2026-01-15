@@ -23,7 +23,7 @@ export default function WhyTarkeys() {
           position: { bottom: -100, left: 0, transform: 'translate(-25%, 25%)' },
         },
       ]}
-      sx={{ height: { xs: 'auto', md: 700 } }}
+      sx={{ height: { xs: 'auto', md: 700 }, minHeight: { xs: 'auto', md: 700 } }}
     >
       <Stack alignItems="center" justifyContent="center" height="100%" spacing={{ xs: 2, md: 3 }}>
         <SectionHeader />
