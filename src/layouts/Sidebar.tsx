@@ -103,7 +103,7 @@ export default function Sidebar({ isOpen, toggle }: { isOpen: boolean; toggle: (
                 {appbarNavigations.map(item => {
                   const active = activeSection === item.path.replace('#', '')
                   return (
-                    <motion.li
+                    <motion.div
                       key={item.path}
                       variants={{
                         open: { opacity: 1, y: 0, transition: { stiffness: 500, damping: 30 } },
@@ -125,7 +125,7 @@ export default function Sidebar({ isOpen, toggle }: { isOpen: boolean; toggle: (
                           />
                         </ListItemButton>
                       </ListItem>
-                    </motion.li>
+                    </motion.div>
                   )
                 })}
               </List>
