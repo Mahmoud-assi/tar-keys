@@ -2,9 +2,9 @@ import React, { useState, useEffect, useCallback } from 'react'
 import { Box, IconButton, Stack, useTheme, useMediaQuery } from '@mui/material'
 import { motion, AnimatePresence } from 'framer-motion'
 
-interface CarouselProps {
-  items: any[]
-  renderItem: (item: any, index: number) => React.ReactNode
+interface CarouselProps<T = unknown> {
+  items: T[]
+  renderItem: (item: T, index: number) => React.ReactNode
   itemsPerView?: number
   autoPlay?: boolean
   autoPlayInterval?: number
@@ -12,29 +12,30 @@ interface CarouselProps {
 
 const MotionBox = motion(Box)
 
-export default function Carousel({
+export default function Carousel<T = unknown>({
   items,
   renderItem,
   itemsPerView = 4,
   autoPlay = false,
   autoPlayInterval = 5000,
-}: CarouselProps) {
+}: CarouselProps<T>) {
   const [currentIndex, setCurrentIndex] = useState(0)
   const [itemsToShow, setItemsToShow] = useState(itemsPerView)
   const theme = useTheme()
   const isMobile = useMediaQuery(theme.breakpoints.down('md'))
   const isTablet = useMediaQuery(theme.breakpoints.down('lg'))
 
+  const nextSlide = useCallback(() => {
+    setCurrentIndex(prev => (prev + itemsToShow >= items.length ? 0 : prev + 1))
+  }, [items.length, itemsToShow])
+
+  // Calculate items to show based on screen size
+  const calculatedItemsToShow = isMobile ? 1 : isTablet ? 2 : itemsPerView
+
   // حساب عدد العناصر المعروضة بناءً على حجم الشاشة
   useEffect(() => {
-    if (isMobile) {
-      setItemsToShow(1)
-    } else if (isTablet) {
-      setItemsToShow(2)
-    } else {
-      setItemsToShow(itemsPerView)
-    }
-  }, [isMobile, isTablet, itemsPerView])
+    setItemsToShow(calculatedItemsToShow)
+  }, [calculatedItemsToShow])
 
   // Auto-play functionality
   useEffect(() => {
@@ -45,11 +46,7 @@ export default function Carousel({
     }, autoPlayInterval)
 
     return () => clearInterval(interval)
-  }, [autoPlay, autoPlayInterval, currentIndex])
-
-  const nextSlide = useCallback(() => {
-    setCurrentIndex(prev => (prev + itemsToShow >= items.length ? 0 : prev + 1))
-  }, [items.length, itemsToShow])
+  }, [autoPlay, autoPlayInterval, nextSlide])
 
   const prevSlide = useCallback(() => {
     setCurrentIndex(prev => (prev === 0 ? Math.max(0, items.length - itemsToShow) : prev - 1))

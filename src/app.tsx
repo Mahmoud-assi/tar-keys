@@ -1,8 +1,8 @@
-import { createBrowserRouter, RouterProvider } from 'react-router-dom'
+import { createHashRouter, RouterProvider } from 'react-router-dom'
 import { routesSection } from '@/router'
 import { LocalizationProvider, ThemeProvider } from '@/providers'
 
-const router = createBrowserRouter(routesSection)
+const router = createHashRouter(routesSection)
 
 export default function App() {
   return (

@@ -331,7 +331,6 @@ export default function Reviews() {
   const theme = useTheme()
   const isMobile = useMediaQuery(theme.breakpoints.down('md'))
   const isTablet = useMediaQuery(theme.breakpoints.between('md', 'lg'))
-  const isDesktop = useMediaQuery(theme.breakpoints.up('lg'))
   // عرض الكارد ثابت حسب الشاشة
   const CARD_WIDTH = isMobile ? 225 : isTablet ? 275 : 300
   const GAP = 16

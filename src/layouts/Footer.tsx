@@ -15,7 +15,7 @@ import {
   type StackProps,
 } from '@mui/material'
 import CopyrightIcon from '@mui/icons-material/Copyright'
-import { Link } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import { useMemo, type ReactNode } from 'react'
 import { useIntl, type IntlShape } from 'react-intl'
 import AnimateButton from '@/components/AnimateButton'
@@ -193,6 +193,24 @@ function LinkColumn({
   title: string
   links: { label: string; href: string; icon?: ReactNode }[]
 }) {
+  const navigate = useNavigate()
+
+  const handleClick = (href: string) => {
+    if (!href) return
+    
+    if (href.startsWith('/')) {
+      navigate(href)
+    } else if (href.startsWith('mailto:') || href.startsWith('tel:')) {
+      // Handle mailto and tel links
+      const link = document.createElement('a')
+      link.href = href
+      link.click()
+    } else {
+      // Handle external links
+      window.open(href, '_blank', 'noopener,noreferrer')
+    }
+  }
+
   return (
     <Stack spacing={1.25} alignItems={{ xs: 'center', sm: 'start' }}>
       <Typography variant="body2" color="grey.300" textAlign="left">
@@ -204,9 +222,10 @@ function LinkColumn({
           alignItems="center"
           spacing={1}
           key={index}
+          onClick={() => handleClick(link.href)}
           sx={{
             cursor: 'pointer',
-            [`.${svgIconClasses.root}, span, a`]: {
+            [`.${svgIconClasses.root}, span`]: {
               color: 'var(--palette-common-white)',
               width: 16,
               height: 16,
@@ -218,7 +237,7 @@ function LinkColumn({
               transition: 'color .3s ease',
             },
             '&:hover': {
-              [`.${linkClasses.root}, .${svgIconClasses.root}, span, a`]: {
+              [`.${linkClasses.root}, .${svgIconClasses.root}, span`]: {
                 color: 'var(--palette-secondary-main)',
               },
             },
@@ -226,17 +245,13 @@ function LinkColumn({
         >
           {link?.icon && link?.icon}
           <AnimateButton type="slide" offset={1.25}>
-            {link.href.startsWith('/') ? (
-              <Link to={link.href} style={{ textDecoration: 'none' }}>
-                <MuiLink component="span" variant="caption" sx={{ color: 'inherit' }}>
-                  {link.label}
-                </MuiLink>
-              </Link>
-            ) : (
-              <MuiLink href={link.href} variant="caption">
-                {link.label}
-              </MuiLink>
-            )}
+            <MuiLink
+              component="span"
+              variant="caption"
+              sx={{ color: 'inherit', cursor: 'pointer' }}
+            >
+              {link.label}
+            </MuiLink>
           </AnimateButton>
         </Stack>
       ))}

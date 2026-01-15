@@ -28,13 +28,13 @@ export default function Courses() {
 
   const isMobile = useMediaQuery(theme.breakpoints.down('md'))
   const isTablet = useMediaQuery(theme.breakpoints.between('md', 'lg'))
-  const isDesktop = useMediaQuery(theme.breakpoints.up('lg'))
+
+  // Calculate items per view based on screen size
+  const calculatedItemsPerView = isMobile ? 1 : isTablet ? 3 : 4
 
   useEffect(() => {
-    if (isMobile) setItemsPerView(1)
-    else if (isTablet) setItemsPerView(3)
-    else setItemsPerView(4)
-  }, [isMobile, isTablet, isDesktop])
+    setItemsPerView(calculatedItemsPerView)
+  }, [calculatedItemsPerView])
 
   const nextSlide = useCallback(() => {
     setCurrentIndex(prev => {
