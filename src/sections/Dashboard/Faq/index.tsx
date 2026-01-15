@@ -24,7 +24,6 @@ export default function FAQ() {
 
   return (
     <PageSection
-      id="faq"
       bgImage="/images/faq/bg.png"
       bgRotation="rotate(-90deg)"
       bgSize="35% auto"

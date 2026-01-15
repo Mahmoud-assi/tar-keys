@@ -26,14 +26,30 @@ export default function DashboardPage() {
 
   return (
     <Box>
-      <HeroSection />
-      <WhyTarkeys />
-      <OurServices />
-      <Courses />
-      <ExploreTarkeys />
-      <Reviews />
-      <FAQ />
-      <Contact />
+      <Box id="home">
+        <HeroSection />
+      </Box>
+      <Box id="why-tarkeys">
+        <WhyTarkeys />
+      </Box>
+      <Box id="our-services">
+        <OurServices />
+      </Box>
+      <Box id="courses">
+        <Courses />
+      </Box>
+      <Box id="explore-tarkeys">
+        <ExploreTarkeys />
+      </Box>
+      <Box id="reviews">
+        <Reviews />
+      </Box>
+      <Box id="faq">
+        <FAQ />
+      </Box>
+      <Box id="contact">
+        <Contact />
+      </Box>
     </Box>
   )
 }

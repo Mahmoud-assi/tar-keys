@@ -26,7 +26,7 @@ export default function ExploreTarkeys() {
         },
       ]}
     >
-      <Stack alignItems="center" justifyContent="center" height="100%" id="explore-tarkeys">
+      <Stack alignItems="center" justifyContent="center" height="100%">
         <SectionHeader />
         <Container maxWidth="lg" sx={{ mx: 'auto', mt: { xs: 2, md: 3 }, px: { xs: 0 } }}>
           <VideoPlayer />

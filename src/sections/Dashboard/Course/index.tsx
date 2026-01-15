@@ -407,7 +407,7 @@ export default function Courses() {
   return (
     <PageSection
       bgImage="/images/courses/bg.png"
-      id="courses"
+      
       fades={[
         {
           color: 'rgba(254, 206, 48, 0.15)',

@@ -7,7 +7,6 @@ import CardsSection from './CardsSection'
 export default function WhyTarkeys() {
   return (
     <PageSection
-      id="why-tarkeys"
       bgImage="/images/why-tarkeys/bg.png"
       fades={[
         {

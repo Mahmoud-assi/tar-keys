@@ -14,7 +14,6 @@ export default function Reviews() {
   const { formatMessage: f } = useIntl()
   const xs = useMediaQuery(theme => theme.breakpoints.down(560))
   const xxs = useMediaQuery(theme => theme.breakpoints.down(450))
-
   const reviews = getReviewsByLocale('ar')
   const [emblaRef] = useEmblaCarousel({ loop: true, watchDrag: true, slidesToScroll: 'auto' }, [
     AutoScroll({
@@ -27,9 +26,9 @@ export default function Reviews() {
       direction: 'forward',
     }),
   ])
+
   return (
     <PageSection
-      id="reviews"
       bgImage="/images/reviews/bg.png"
       bgRotation="rotate(180deg)"
       bgSize="75% auto"
