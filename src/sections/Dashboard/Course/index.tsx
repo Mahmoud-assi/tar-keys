@@ -16,12 +16,15 @@ import { motion } from 'framer-motion'
 import useEmblaCarousel from 'embla-carousel-react'
 import { useDotButton } from './useDotButton'
 import { usePrevNextButtons } from './usePrevNextButtons'
+import { css, Global } from '@emotion/react'
 
 const MotionTypography = motion.create(Typography)
 
 export default function Courses() {
   const { formatMessage: f } = useIntl()
   const theme = useTheme()
+  const xs = useMediaQuery(theme.breakpoints.down(560))
+  const xxs = useMediaQuery(theme.breakpoints.down(450))
   const isMobile = useMediaQuery(theme.breakpoints.down('md'))
   const [emblaRef, emblaApi] = useEmblaCarousel({
     align: 'start',
@@ -29,7 +32,8 @@ export default function Courses() {
     // dragFree: true,
   })
   const { selectedIndex, scrollSnaps, onDotButtonClick } = useDotButton(emblaApi)
-  const { onPrevButtonClick, onNextButtonClick } = usePrevNextButtons(emblaApi)
+  const { prevBtnDisabled, nextBtnDisabled, onPrevButtonClick, onNextButtonClick } =
+    usePrevNextButtons(emblaApi)
 
   const renderHeader = () => (
     <Stack spacing={2} alignItems="center" sx={{ mb: { xs: 3, md: 4 } }}>
@@ -131,22 +135,36 @@ export default function Courses() {
         <Grid container spacing={2} alignItems="center" justifyContent="center">
           <Grid size={{ xs: 1 }} sx={{ display: { xs: 'none', md: 'block' } }}>
             <Stack alignItems="center">
-              <IconButton onClick={onPrevButtonClick}>
+              <IconButton onClick={onPrevButtonClick} disabled={prevBtnDisabled}>
                 <Box component="img" src="/images/courses/next.png" />
               </IconButton>
             </Stack>
           </Grid>
           <Grid size={{ xs: 12, md: 10 }}>
-            <Box className="embla" ref={emblaRef}>
-              <Box className="embla__viewport">
-                <Box className="embla__container">{mock_data.map(renderCarouselItem)}</Box>
+            <Box
+              className="embla"
+              dir="rtl"
+              sx={{
+                maxWidth: {
+                  xs: xxs ? '20rem' : xs ? '24rem' : '32rem',
+                  sm: '34rem',
+                  md: '45rem',
+                  lg: '52rem',
+                  xl: '60rem',
+                },
+              }}
+            >
+              <Box className="embla__viewport" ref={emblaRef}>
+                <Box className="embla__container" sx={{ direction: 'rtl' }}>
+                  {mock_data.map(renderCarouselItem)}
+                </Box>
               </Box>
             </Box>
             {scrollSnaps.length > 1 && renderDots()}
           </Grid>
           <Grid size={{ xs: 1 }} sx={{ display: { xs: 'none', md: 'block' } }}>
             <Stack alignItems="center">
-              <IconButton onClick={onNextButtonClick}>
+              <IconButton onClick={onNextButtonClick} disabled={nextBtnDisabled}>
                 <Box component="img" src="/images/courses/prev.png" />
               </IconButton>
             </Stack>
@@ -157,10 +175,22 @@ export default function Courses() {
   )
 
   const renderMobileCarousel = () => (
-    <Container maxWidth="sm" sx={{ px: { xs: 2, sm: 3 } }}>
-      <Box className="embla">
+    <Container maxWidth="sm" sx={{ px: { xs: 0, sm: 3 } }}>
+      <Box
+        className="embla"
+        dir="rtl"
+        sx={{
+          maxWidth: {
+            xs: xxs ? '20rem' : xs ? '24rem' : '32rem',
+            sm: '34rem',
+            md: '45rem',
+            lg: '52rem',
+            xl: '60rem',
+          },
+        }}
+      >
         <Box ref={emblaRef} className="embla__viewport">
-          <Box className="embla__container">
+          <Box className="embla__container" sx={{ direction: 'rtl' }}>
             {mock_data.map(course => (
               <Box key={course.id} className="embla__slide">
                 <CourseCard
@@ -177,15 +207,15 @@ export default function Courses() {
           </Box>
         </Box>
       </Box>
-      <Grid container spacing={1} alignItems="center" justifyContent="center">
+      <Grid container spacing={1} alignItems="center" justifyContent="center" sx={{ mt: 2 }}>
         <Grid size={{ xs: 2 }}>
-          <IconButton onClick={onPrevButtonClick}>
+          <IconButton onClick={onPrevButtonClick} disabled={prevBtnDisabled}>
             <Box component="img" src="/images/courses/next.png" />
           </IconButton>
         </Grid>
         <Grid size={{ xs: 8 }}>{renderDots(true)}</Grid>
         <Grid size={{ xs: 2 }}>
-          <IconButton onClick={onNextButtonClick}>
+          <IconButton onClick={onNextButtonClick} disabled={nextBtnDisabled}>
             <Box component="img" src="/images/courses/prev.png" />
           </IconButton>
         </Grid>
@@ -207,6 +237,26 @@ export default function Courses() {
         },
       ]}
     >
+      <Global
+        styles={css`
+          .embla {
+            --slide-height: 19rem;
+            --slide-spacing: 1rem;
+          }
+          .embla__viewport {
+            overflow: hidden;
+          }
+          .embla__container {
+            display: flex;
+            touch-action: pan-y pinch-zoom;
+            margin-left: calc(var(--slide-spacing) * -1);
+          }
+          .embla__slide {
+            transform: translate3d(0, 0, 0);
+            padding-left: var(--slide-spacing);
+          }
+        `}
+      />
       <Stack alignItems="center" justifyContent="center" height="100%">
         {renderHeader()}
         {!isMobile ? renderDesktopTabletCarousel() : renderMobileCarousel()}

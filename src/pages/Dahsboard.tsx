@@ -25,7 +25,7 @@ export default function DashboardPage() {
   }, [hash])
 
   return (
-    <Box>
+    <Box position="relative">
       <Box id="home">
         <HeroSection />
       </Box>

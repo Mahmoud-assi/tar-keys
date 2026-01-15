@@ -8,7 +8,6 @@ export default function MenuToggle({ toggle, isOpen }: { toggle: () => void; isO
       sx={{
         width: 40,
         height: 40,
-        position: 'relative',
         '@media (min-width: 1200px)': {
           display: 'none',
         },

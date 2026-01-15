@@ -28,6 +28,7 @@ export default function CourseCard({
         px: 1.5,
         pt: 1.5,
         pb: 1,
+        direction: 'ltr',
       }}
     >
       <Stack spacing={2} justifyContent="space-between" height="100%">
@@ -38,6 +39,7 @@ export default function CourseCard({
           sx={{
             filter: 'drop-shadow(0.5px 1px 0px var(--palette-secondary-main))',
             maxWidth: 150,
+            textAlign: 'start',
           }}
         >
           {name}
