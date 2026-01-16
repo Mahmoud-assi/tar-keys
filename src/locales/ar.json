@@ -108,5 +108,8 @@
   "coursesDescription": "ملفات تعليمية – شرح وافي وبسيط – اختبارات علمية لضمان الحفظ",
   "currency": "{price} ليرة سورية",
   "courses": "الكورسات",
-  "swipeToApply": "اسحب للتقديم"
+  "swipeToApply": "اسحب للتقديم",
+  "core_sciences": "العلوم الأساسية",
+  "mathematics": "الرياضيات",
+  "languages": "اللغات والأدب"
 }

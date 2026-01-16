@@ -107,10 +107,10 @@ export default function FAQ() {
             <Grid size={{ xs: 12, lg: 4 }} order={{ xs: 2, lg: 3 }}>
               <Grid container spacing={{ xs: 2, md: 3 }}>
                 {(md ? secondHalf.slice(0, 4) : secondHalf).map((faq, idx) => (
-                  <Grid size={{ xs: 12, md: 6, lg: 12 }} key={`second-${idx}`}>
+                  <Grid size={{ xs: 12, md: 6, lg: 12 }} key={idx + 5}>
                     <FAQItem
                       {...faq}
-                      index={idx + 1}
+                      index={idx + 5}
                       expandedIndex={expandedIndex}
                       handleToggle={handleToggle}
                     />

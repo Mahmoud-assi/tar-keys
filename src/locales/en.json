@@ -108,5 +108,8 @@
   "coursesDescription": "Educational materials – clear and comprehensive explanations – scientific quizzes to ensure retention",
   "currency": "{price} Syrian Pound",
   "courses": "Courses",
-  "swipeToApply": "Swipe to Apply"
+  "swipeToApply": "Swipe to Apply",
+  "core_sciences": "Core Sciences",
+  "mathematics": "Mathematics",
+  "languages": "Languages & Literature"
 }

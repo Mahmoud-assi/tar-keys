@@ -14,13 +14,19 @@ export default function DashboardPage() {
   const { hash } = useLocation()
 
   useLayoutEffect(() => {
+    // Only scroll to hash if hash exists
+    if (!hash) return
     const sectionId = hash.slice(1)
     if (sectionId) {
-      const el = document.getElementById(sectionId)
-      if (el) {
-        const topPos = el.getBoundingClientRect().top + window.pageYOffset - 56
-        window.scrollTo({ top: topPos, behavior: 'auto' })
-      }
+      // Use a small delay to ensure DOM is ready
+      const timer = setTimeout(() => {
+        const el = document.getElementById(sectionId)
+        if (el) {
+          const topPos = el.getBoundingClientRect().top + window.pageYOffset - 56
+          window.scrollTo({ top: topPos, behavior: 'auto' })
+        }
+      }, 0)
+      return () => clearTimeout(timer)
     }
   }, [hash])
 

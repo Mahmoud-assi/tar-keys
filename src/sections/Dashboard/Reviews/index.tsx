@@ -12,7 +12,7 @@ const MotionImg = motion.create('img')
 
 export default function Reviews() {
   const { formatMessage: f } = useIntl()
-  const xs = useMediaQuery(theme => theme.breakpoints.down(560))
+  const xs = useMediaQuery(theme => theme.breakpoints.between(450, 560))
   const xxs = useMediaQuery(theme => theme.breakpoints.down(450))
   const reviews = getReviewsByLocale('ar')
   const [emblaRef] = useEmblaCarousel({ loop: true, watchDrag: true, slidesToScroll: 'auto' }, [
@@ -70,7 +70,7 @@ export default function Reviews() {
                 <Box
                   component={MotionImg}
                   src="/images/reviews/image.png"
-                  sx={{ width: { xs: 342, md: '100%' }, height: { xs: 342, md: '100%' } }}
+                  sx={{ width: { xs: 330, md: '100%' }, height: { xs: 330, md: '100%' } }}
                   initial={{ opacity: 0, scale: 1 }}
                   whileInView={{ opacity: 1 }}
                   viewport={{ once: true, amount: 0.5 }}

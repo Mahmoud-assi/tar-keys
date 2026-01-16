@@ -1,81 +1,25 @@
 import PageSection from '@/components/PageSection'
-import {
-  Box,
-  Container,
-  Grid,
-  IconButton,
-  Stack,
-  Typography,
-  useTheme,
-  useMediaQuery,
-} from '@mui/material'
-import { useIntl } from 'react-intl'
+import { Box, Container, Grid, IconButton, Stack, useTheme, useMediaQuery } from '@mui/material'
 import { mock_data } from './_mock'
 import CourseCard from './CourseCard'
-import { motion } from 'framer-motion'
+import DotButtons from './DotButtons'
+import CoursesHeader from './CoursesHeader'
 import useEmblaCarousel from 'embla-carousel-react'
 import { useDotButton } from './useDotButton'
 import { usePrevNextButtons } from './usePrevNextButtons'
 import { css, Global } from '@emotion/react'
-
-const MotionTypography = motion.create(Typography)
+import Autoplay from 'embla-carousel-autoplay'
+import CourseSelection from './CourseSelection'
 
 export default function Courses() {
-  const { formatMessage: f } = useIntl()
   const theme = useTheme()
-  const xs = useMediaQuery(theme.breakpoints.down(560))
+  const xs = useMediaQuery(theme.breakpoints.between(450, 560))
   const xxs = useMediaQuery(theme.breakpoints.down(450))
   const isMobile = useMediaQuery(theme.breakpoints.down('md'))
-  const [emblaRef, emblaApi] = useEmblaCarousel({
-    align: 'start',
-    // slidesToScroll: 'auto',
-    // dragFree: true,
-  })
+  const [emblaRef, emblaApi] = useEmblaCarousel({ align: 'start' }, [Autoplay()])
   const { selectedIndex, scrollSnaps, onDotButtonClick } = useDotButton(emblaApi)
   const { prevBtnDisabled, nextBtnDisabled, onPrevButtonClick, onNextButtonClick } =
     usePrevNextButtons(emblaApi)
-
-  const renderHeader = () => (
-    <Stack spacing={2} alignItems="center" sx={{ mb: { xs: 3, md: 4 } }}>
-      <MotionTypography
-        variant="subtitle1"
-        fontSize={{ xs: 28, md: 32 }}
-        color="primary"
-        initial={{ opacity: 0, y: 30 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{
-          duration: 0.6,
-          ease: [0.16, 1, 0.3, 1],
-        }}
-        sx={{
-          filter: 'drop-shadow(0.5px 1px 0px var(--palette-secondary-main))',
-        }}
-      >
-        {f({ id: 'coursesTitle' })}
-      </MotionTypography>
-      <MotionTypography
-        variant="body1"
-        fontSize={{ xs: 16, md: 20 }}
-        sx={{
-          textAlign: 'justify',
-          textAlignLast: 'center',
-          maxWidth: '800px',
-          px: { xs: 2, md: 0 },
-        }}
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{
-          duration: 0.6,
-          delay: 0.1,
-          ease: [0.16, 1, 0.3, 1],
-        }}
-      >
-        {f({ id: 'coursesDescription' })}
-      </MotionTypography>
-    </Stack>
-  )
 
   const renderCarouselItem = (course: (typeof mock_data)[0]) => (
     <Box key={course.id} className="embla__slide">
@@ -89,44 +33,6 @@ export default function Courses() {
         price={course.original_price}
       />
     </Box>
-  )
-
-  const renderDots = (mobile = false) => (
-    <Stack
-      direction="row"
-      spacing={mobile ? 0.5 : 1}
-      justifyContent="center"
-      alignItems="center"
-      sx={mobile ? {} : { mt: 2 }}
-    >
-      {scrollSnaps.map((_, index) => (
-        <IconButton
-          key={index}
-          onClick={() => onDotButtonClick(index)}
-          sx={{
-            p: 0.5,
-            '&:hover': {
-              transform: mobile ? 'none' : 'scale(1.2)',
-              '& .dot': {
-                bgcolor: 'primary.light',
-              },
-            },
-            transition: 'transform 0.2s ease',
-          }}
-        >
-          <Box
-            className="dot"
-            sx={{
-              width: selectedIndex === index ? (mobile ? 10 : 12) : mobile ? 6 : 8,
-              height: selectedIndex === index ? (mobile ? 10 : 12) : mobile ? 6 : 8,
-              borderRadius: '50%',
-              bgcolor: selectedIndex === index ? 'primary.main' : 'grey.300',
-              transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
-            }}
-          />
-        </IconButton>
-      ))}
-    </Stack>
   )
 
   const renderDesktopTabletCarousel = () => (
@@ -160,7 +66,13 @@ export default function Courses() {
                 </Box>
               </Box>
             </Box>
-            {scrollSnaps.length > 1 && renderDots()}
+            {scrollSnaps.length > 1 && (
+              <DotButtons
+                scrollSnaps={scrollSnaps}
+                selectedIndex={selectedIndex}
+                onDotButtonClick={onDotButtonClick}
+              />
+            )}
           </Grid>
           <Grid size={{ xs: 1 }} sx={{ display: { xs: 'none', md: 'block' } }}>
             <Stack alignItems="center">
@@ -207,13 +119,20 @@ export default function Courses() {
           </Box>
         </Box>
       </Box>
-      <Grid container spacing={1} alignItems="center" justifyContent="center" sx={{ mt: 2 }}>
+      <Grid container spacing={1} alignItems="center" justifyContent="center" sx={{ mt: 2, px: 1 }}>
         <Grid size={{ xs: 2 }}>
           <IconButton onClick={onPrevButtonClick} disabled={prevBtnDisabled}>
             <Box component="img" src="/images/courses/next.png" />
           </IconButton>
         </Grid>
-        <Grid size={{ xs: 8 }}>{renderDots(true)}</Grid>
+        <Grid size={{ xs: 8 }}>
+          <DotButtons
+            scrollSnaps={scrollSnaps}
+            selectedIndex={selectedIndex}
+            onDotButtonClick={onDotButtonClick}
+            mobile
+          />
+        </Grid>
         <Grid size={{ xs: 2 }}>
           <IconButton onClick={onNextButtonClick} disabled={nextBtnDisabled}>
             <Box component="img" src="/images/courses/prev.png" />
@@ -258,8 +177,11 @@ export default function Courses() {
         `}
       />
       <Stack alignItems="center" justifyContent="center" height="100%">
-        {renderHeader()}
-        {!isMobile ? renderDesktopTabletCarousel() : renderMobileCarousel()}
+        <CoursesHeader />
+        <Stack spacing={2} alignItems="center">
+          <CourseSelection />
+          {!isMobile ? renderDesktopTabletCarousel() : renderMobileCarousel()}
+        </Stack>
       </Stack>
     </PageSection>
   )

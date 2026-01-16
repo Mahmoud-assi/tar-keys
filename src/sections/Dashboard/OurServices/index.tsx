@@ -20,7 +20,7 @@ export default function OurServices() {
   const scale = useTransform(smoothProgress, [0, 0.5, 1], [1, 1.05, 1])
 
   return (
-    <Box ref={containerRef} sx={{ height: { xs: 1800, md: 1500 }, position: 'relative' }}>
+    <Box ref={containerRef} sx={{ height: { xs: 2000, md: 1500 }, position: 'relative' }}>
       <PageSection
         bgImage="/images/our-services/bg.png"
         bgRotation="rotate(-180deg)"
@@ -67,6 +67,7 @@ export default function OurServices() {
             color="primary"
             sx={{ filter: 'drop-shadow(0.5px 1px 0px var(--palette-secondary-main))' }}
             style={{ y, scale }}
+            textAlign="center"
           >
             {f({ id: 'educationalServicesTitle' })}
           </MotionTypography>
