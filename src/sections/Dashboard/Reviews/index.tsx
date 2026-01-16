@@ -21,7 +21,7 @@ export default function Reviews() {
       stopOnFocusIn: false,
       stopOnInteraction: false,
       stopOnMouseEnter: false,
-      speed: 1,
+      speed: 0.25,
       startDelay: 4,
       direction: 'forward',
     }),
