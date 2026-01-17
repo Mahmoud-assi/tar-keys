@@ -109,11 +109,10 @@ function PopperButton({
               fontSize: { xs: 12, md: 16 },
               minWidth: { xs: 100, md: 150 },
               color: 'text.primary',
-              bgcolor: alpha(palette.primary.main, 0.2),
+              bgcolor: '#F1F3FF',
               ':hover': {
-                bgcolor: alpha(palette.primary.dark, 0.2),
+                bgcolor: alpha(palette.primary.main, 0.15),
               },
-              borderRadius: 2,
             })}
           >
             {value?.label ?? options?.[0]?.label ?? ''}
