@@ -86,7 +86,7 @@ function PopperButton({
   title: string
   dropdown: ReturnType<typeof useDropdown>
   options: LabelValue[]
-  value: LabelValue
+  value?: LabelValue
   handleSelectOption(option: LabelValue): void
 }) {
   const { open, handleClose, anchorEl, handleToggle, anchorElWidth } = dropdown
@@ -94,7 +94,7 @@ function PopperButton({
   return (
     <ClickAwayListener onClickAway={handleClose}>
       <Box>
-        <Stack spacing={{ xs: 1, md: 2 }} direction="row" alignItems="center">
+        <Stack spacing={{ xs: 0.5, sm: 1, md: 2 }} direction="row" alignItems="center">
           <Typography variant="subtitle1" fontSize={{ xs: 12, md: 16 }}>
             {title}
           </Typography>
@@ -107,15 +107,16 @@ function PopperButton({
             sx={({ palette }) => ({
               justifyContent: 'space-between',
               fontSize: { xs: 12, md: 16 },
-              minWidth: { xs: 140, md: 150 },
+              minWidth: { xs: 100, md: 150 },
               color: 'text.primary',
               bgcolor: alpha(palette.primary.main, 0.2),
               ':hover': {
                 bgcolor: alpha(palette.primary.dark, 0.2),
               },
+              borderRadius: 2,
             })}
           >
-            {value.label || options[0].label}
+            {value?.label ?? options?.[0]?.label ?? ''}
           </Button>
         </Stack>
         <Popper
@@ -129,7 +130,14 @@ function PopperButton({
               <Paper sx={{ width: anchorElWidth }} variant="outlined">
                 <MenuList>
                   {options.map((option, idx) => (
-                    <MenuItem key={idx} onClick={() => handleSelectOption(option)}>
+                    <MenuItem
+                      key={idx}
+                      sx={{ minHeight: 32, fontSize: { xs: 12, md: 16 } }}
+                      onClick={() => {
+                        handleSelectOption(option)
+                        handleClose()
+                      }}
+                    >
                       {option?.label}
                     </MenuItem>
                   ))}
