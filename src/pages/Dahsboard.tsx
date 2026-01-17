@@ -14,11 +14,9 @@ export default function DashboardPage() {
   const { hash } = useLocation()
 
   useLayoutEffect(() => {
-    // Only scroll to hash if hash exists
     if (!hash) return
     const sectionId = hash.slice(1)
     if (sectionId) {
-      // Use a small delay to ensure DOM is ready
       const timer = setTimeout(() => {
         const el = document.getElementById(sectionId)
         if (el) {
@@ -31,7 +29,7 @@ export default function DashboardPage() {
   }, [hash])
 
   return (
-    <Box position="relative">
+    <Box>
       <Box id="home">
         <HeroSection />
       </Box>
@@ -41,10 +39,10 @@ export default function DashboardPage() {
       <Box id="our-services">
         <OurServices />
       </Box>
-      <Box id="courses">
+      <Box id="courses" overflow="hidden">
         <Courses />
       </Box>
-      <Box id="explore-tarkeys">
+      <Box id="explore-tarkeys" overflow="hidden">
         <ExploreTarkeys />
       </Box>
       <Box id="reviews">

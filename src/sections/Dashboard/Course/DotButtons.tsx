@@ -28,7 +28,7 @@ export default function DotButtons({
           sx={{
             p: 0.5,
             '&:hover': {
-              transform: mobile ? 'none' : 'scale(1.2)',
+              transform: mobile ? 'none' : 'scale(1.1)',
               '& .dot': {
                 bgcolor: 'primary.light',
               },
@@ -44,6 +44,10 @@ export default function DotButtons({
               borderRadius: '50%',
               bgcolor: selectedIndex === index ? 'primary.main' : 'grey.300',
               transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+              filter:
+                selectedIndex === index
+                  ? 'drop-shadow(0.5px 1px 0px var(--palette-secondary-main))'
+                  : '',
             }}
           />
         </IconButton>

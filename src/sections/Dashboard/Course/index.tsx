@@ -87,7 +87,7 @@ export default function Courses() {
   )
 
   const renderMobileCarousel = () => (
-    <Container maxWidth="sm" sx={{ px: { xs: 0, sm: 3 } }}>
+    <Container maxWidth="sm" sx={{ px: { xs: 0, md: 2 } }}>
       <Box
         className="embla"
         dir="rtl"

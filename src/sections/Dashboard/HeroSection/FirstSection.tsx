@@ -1,5 +1,14 @@
 import AnimateButton from '@/components/AnimateButton'
-import { Box, Button, buttonClasses, Grid, Stack, Typography, useMediaQuery } from '@mui/material'
+import {
+  Box,
+  Button,
+  buttonClasses,
+  Grid,
+  Stack,
+  Typography,
+  typographyClasses,
+  useMediaQuery,
+} from '@mui/material'
 import { motion } from 'framer-motion'
 import { useIntl } from 'react-intl'
 import StatCard from './StatCard'
@@ -90,8 +99,9 @@ export default function FirstSection() {
       </Grid>
       <Grid
         container
-        spacing={{ xs: 2, md: 3 }}
-        sx={{ [`.${buttonClasses.root}`]: { borderRadius: 10 } }}
+        rowSpacing={{ xs: 2, md: 3 }}
+        columnSpacing={{ xs: 1, md: 3 }}
+        sx={{ [`.${buttonClasses.root}`]: { borderRadius: 10, minHeight: 42 } }}
       >
         <Grid size={{ xs: 12, sm: 6, md: 6, lg: lg ? 6 : 4 }}>
           <AnimateButton type="slide" direction="up" offset={1.125}>
@@ -104,7 +114,7 @@ export default function FirstSection() {
           { icon: 'google-play', label: 'googlePlay' },
           { icon: 'app-store', label: 'appStore' },
         ].map(s => (
-          <Grid key={s.label} size={{ xs: 12, sm: 6, lg: lg ? 6 : 4 }}>
+          <Grid key={s.label} size={{ xs: 6, sm: 6, lg: lg ? 6 : 4 }}>
             <StoreDownloadButton
               iconSrc={`/icons/common/${s.icon}.svg`}
               storeLabel={f({ id: 'downloadVia' })}
@@ -131,10 +141,28 @@ function StoreDownloadButton({
       <Button
         variant="outlined"
         fullWidth
-        endIcon={<Box component="img" src={iconSrc} />}
+        size="large"
+        endIcon={
+          <Box
+            component="img"
+            src={iconSrc}
+            sx={{ width: { xs: 16, md: 22 }, height: { xs: 22, md: 22 } }}
+          />
+        }
         sx={{ boxShadow: '0px 4px 4px 0px #0022FF29' }}
       >
-        <Stack direction="row" spacing={1}>
+        <Stack
+          spacing={{ xs: 0.5, md: 1 }}
+          direction="row"
+          sx={{
+            [`.${typographyClasses.root}`]: {
+              fontSize: { xs: 12, md: 14 },
+              lineHeight: 'normal',
+              whiteSpace: 'nowrap',
+              textTransform: 'none',
+            },
+          }}
+        >
           <Typography variant="body2" color="textPrimary">
             {storeLabel}
           </Typography>

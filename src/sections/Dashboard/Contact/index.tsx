@@ -14,7 +14,6 @@ import {
 import { useIntl } from 'react-intl'
 import { motion } from 'framer-motion'
 
-const MotionBox = motion.create(Box)
 const MotionGrid = motion.create(Grid)
 const MotionStack = motion.create(Stack)
 const MotionTypography = motion.create(Typography)
@@ -27,21 +26,22 @@ export default function Contact() {
 
   return (
     <PageSection bgImage="/images/last/bg.png" bgRotation="rotate(-90deg)" bgSize="35% auto">
-      <MotionBox width="100%" sx={{ display: 'flex', alignItems: 'center' }}>
+      <MotionStack width="100%" sx={{ display: 'flex', alignItems: 'center' }}>
+        <MotionTypography
+          variant="subtitle1"
+          fontSize={{ xs: 28, md: 32 }}
+          color="primary"
+          sx={{
+            filter: 'drop-shadow(0.5px 1px 0px var(--palette-secondary-main))',
+            textAlign: 'center',
+            mb: { xs: 2, md: 0 },
+          }}
+          variants={itemVariants}
+        >
+          {f({ id: 'startLearningToday' })}
+        </MotionTypography>
         {isMobile ? (
           <MotionStack spacing={3} sx={{ alignItems: 'center' }} variants={containerVariants}>
-            <MotionTypography
-              variant="subtitle1"
-              fontSize={{ xs: 28, md: 32 }}
-              color="primary"
-              sx={{
-                filter: 'drop-shadow(0.5px 1px 0px var(--palette-secondary-main))',
-                textAlign: 'center',
-              }}
-              variants={itemVariants}
-            >
-              {f({ id: 'startLearningToday' })}
-            </MotionTypography>
             <MotionGrid container spacing={2} justifyContent="center" variants={containerVariants}>
               <MotionGrid
                 size={{ xs: 6 }}
@@ -143,35 +143,27 @@ export default function Contact() {
           </MotionStack>
         ) : (
           <Grid container spacing={{ xs: 2, md: 3 }} alignItems="center">
-            <MotionGrid size={{ xs: 6, lg: 4 }} variants={imageVariants} whileHover="hover">
+            <MotionGrid
+              size={{ xs: 6, lg: 4 }}
+              sx={{ display: { xs: 'block', md: 'none', lg: 'block' } }}
+              variants={imageVariants}
+              whileHover="hover"
+            >
               <Box
                 component="img"
                 src="/images/last/2.png"
                 sx={{ width: '100%', height: 'auto' }}
               />
             </MotionGrid>
-            <MotionGrid size={{ xs: 6, lg: 4 }} variants={containerVariants}>
+            <MotionGrid size={{ xs: 6, md: 6, lg: 4 }} variants={containerVariants}>
               <MotionStack
                 spacing={2}
                 sx={{
                   alignItems: 'center',
-                  [`.${typographyClasses.root}`]: { textAlign: 'center' },
+                  [`.${typographyClasses.root}`]: { textAlign: 'center', textAlignLast: 'center' },
                 }}
                 variants={containerVariants}
               >
-                <MotionTypography
-                  variant="subtitle1"
-                  fontSize={{ xs: 28, md: 32 }}
-                  color="primary"
-                  sx={{
-                    filter: 'drop-shadow(0.5px 1px 0px var(--palette-secondary-main))',
-                    textAlign: 'center',
-                  }}
-                  variants={itemVariants}
-                >
-                  {f({ id: 'startLearningToday' })}
-                </MotionTypography>
-
                 <MotionTypography
                   variant="body1"
                   fontSize={{ xs: 14, md: 18 }}
@@ -232,7 +224,7 @@ export default function Contact() {
               </MotionStack>
             </MotionGrid>
             <MotionGrid
-              size={{ xs: 6, lg: 4 }}
+              size={{ xs: 6, md: 6, lg: 4 }}
               variants={imageVariants}
               whileHover="hover"
               animate={{ ...floatingAnimation, y: [0, -8, 0] }}
@@ -245,7 +237,7 @@ export default function Contact() {
             </MotionGrid>
           </Grid>
         )}
-      </MotionBox>
+      </MotionStack>
     </PageSection>
   )
 }

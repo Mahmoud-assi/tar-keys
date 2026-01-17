@@ -113,7 +113,7 @@ export default function Reviews() {
                       content: '""',
                       position: 'absolute',
                       top: 0,
-                      right: 0,
+                      right: -4,
                       width: 50,
                       height: '100%',
                       background: 'linear-gradient(to left, #F5FBFD, rgba(255,255,255,0))',

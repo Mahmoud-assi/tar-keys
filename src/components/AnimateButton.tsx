@@ -71,15 +71,27 @@ export default function AnimateButton({
     case 'slide':
       if (direction === 'up' || direction === 'down')
         return (
-          <motion.div animate={{ y: y }} onHoverEnd={() => cycleY()} onHoverStart={() => cycleY()}>
+          <Box
+            component={motion.div}
+            animate={{ y: y }}
+            onHoverEnd={() => cycleY()}
+            onHoverStart={() => cycleY()}
+            {...props}
+          >
             {children}
-          </motion.div>
+          </Box>
         )
 
       return (
-        <motion.div animate={{ x: x }} onHoverEnd={() => cycleX()} onHoverStart={() => cycleX()}>
+        <Box
+          component={motion.div}
+          animate={{ x: x }}
+          onHoverEnd={() => cycleX()}
+          onHoverStart={() => cycleX()}
+          {...props}
+        >
           {children}
-        </motion.div>
+        </Box>
       )
 
     case 'scale':

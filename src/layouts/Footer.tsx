@@ -80,16 +80,21 @@ export default function Footer() {
             <FooterBrand f={f} />
           </Grid>
           <Grid display={{ xs: 'flex', md: 'none' }} size={{ xs: 12, md: 4, lg: 3 }}>
-            <StoreDownloadButtons f={f} direction={{ xs: 'column', sm: 'row' }} />
+            <StoreDownloadButtons
+              f={f}
+              direction={{ xs: 'row', sm: 'row' }}
+              justifyContent={{ xs: 'center' }}
+              sx={{ width: '100%' }}
+            />
           </Grid>
-          <Grid size={{ xs: 12, md: 8, lg: 9 }}>
+          <Grid size={{ xs: 12, md: 8, lg: 9 }} sx={{ px: { xs: 1, sm: 1, md: 0 } }}>
             <Grid
               container
               spacing={{ xs: 3, md: 4 }}
               justifyContent={{ xs: 'center', sm: 'space-between', md: 'start' }}
               alignItems="flex-start"
             >
-              <Grid size={{ xs: 12, sm: 6, lg: 3 }}>
+              <Grid size={{ xs: 12, sm: 6, lg: 3 }} display={{ xs: 'none', sm: 'block' }}>
                 <Box sx={{ display: 'flex', justifyContent: { xs: 'center', sm: 'flex-start' } }}>
                   <LinkColumn title={f({ id: 'mainSections' })} links={contactInfo} />
                 </Box>
@@ -197,7 +202,7 @@ function LinkColumn({
 
   const handleClick = (href: string) => {
     if (!href) return
-    
+
     if (href.startsWith('/')) {
       navigate(href)
     } else if (href.startsWith('mailto:') || href.startsWith('tel:')) {
@@ -270,15 +275,34 @@ function StoreDownloadButton({
 }) {
   const xs = useMediaQuery(theme => theme.breakpoints.down('sm'))
   return (
-    <AnimateButton type="slide" direction="up" offset={1.5}>
+    <AnimateButton type="slide" direction="up" offset={1.5} sx={{ width: '100%' }}>
       <Button
         variant="contained"
         color="secondary"
         size={xs ? 'medium' : 'large'}
         fullWidth
-        endIcon={<Box component="img" src={iconSrc} />}
+        endIcon={
+          <Box
+            component="img"
+            src={iconSrc}
+            sx={{ width: { xs: 16, md: 22 }, height: { xs: 22, md: 22 } }}
+          />
+        }
+        sx={{ minHeight: { xs: 42, md: 50 } }}
       >
-        <Stack direction="row" alignItems="center" spacing={1}>
+        <Stack
+          direction="row"
+          alignItems="center"
+          spacing={{ xs: 0.5, md: 1 }}
+          sx={{
+            [`.${typographyClasses.root}`]: {
+              fontSize: { xs: 12, md: 14 },
+              lineHeight: 'normal',
+              whiteSpace: 'nowrap',
+              textTransform: 'none',
+            },
+          }}
+        >
           <Typography variant="body2">{downloadLabel}</Typography>
           <Typography variant="body2">{storeLabel}</Typography>
         </Stack>
