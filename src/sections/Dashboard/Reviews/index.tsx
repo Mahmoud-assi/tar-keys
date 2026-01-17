@@ -70,7 +70,7 @@ export default function Reviews() {
                 <Box
                   component={MotionImg}
                   src="/images/reviews/image.png"
-                  sx={{ width: { xs: 330, md: '100%' }, height: { xs: 330, md: '100%' } }}
+                  sx={{ width: { xs: 320, md: '100%' }, height: { xs: 320, md: '100%' } }}
                   initial={{ opacity: 0, scale: 1 }}
                   whileInView={{ opacity: 1 }}
                   viewport={{ once: true, amount: 0.5 }}

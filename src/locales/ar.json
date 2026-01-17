@@ -111,5 +111,12 @@
   "swipeToApply": "اسحب للتقديم",
   "core_sciences": "العلوم الأساسية",
   "mathematics": "الرياضيات",
-  "languages": "اللغات والأدب"
+  "languages": "اللغات والأدب",
+  "branch": "الفرع",
+  "courseType": "نوع الدورة",
+  "scientific": "العلمي",
+  "literary": "الأدبي",
+  "foundation": "تأسيس",
+  "curriculum": "منهاج",
+  "intensive": "مكثفات"
 }

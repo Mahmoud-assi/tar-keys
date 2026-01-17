@@ -49,7 +49,7 @@ export default function Appbar({ isOpen, toggle }: { isOpen: boolean; toggle: ()
                 <Box component="img" src="/images/logo.png" sx={{ width: 40, height: 40 }} />
                 <SvgColor
                   src="/icons/layout/logo-text-header.svg"
-                  sx={{ width: 92, height: 48, color: 'primary.main' }}
+                  sx={{ width: 92, height: 48, color: 'primary.main', mt: 1 }}
                 />
               </Stack>
             </Stack>
@@ -76,6 +76,7 @@ export default function Appbar({ isOpen, toggle }: { isOpen: boolean; toggle: ()
                   sx={{
                     borderRadius: 10,
                     color: 'secondary.main',
+                    fontSize: { xs: 12, md: 16 },
                   }}
                 >
                   {f({ id: 'contactSupport' })}

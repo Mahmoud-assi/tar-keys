@@ -111,5 +111,12 @@
   "swipeToApply": "Swipe to Apply",
   "core_sciences": "Core Sciences",
   "mathematics": "Mathematics",
-  "languages": "Languages & Literature"
+  "languages": "Languages & Literature",
+  "branch": "Branch",
+  "courseType": "Course Type",
+  "scientific": "Scientific Track",
+  "literary": "Literary Track",
+  "foundation": "Foundation",
+  "curriculum": "Curriculum",
+  "intensive": "Intensive Courses"
 }

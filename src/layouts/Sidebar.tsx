@@ -1,5 +1,14 @@
-import { Box, IconButton, List, ListItem, ListItemButton, ListItemText, Stack } from '@mui/material'
-import { motion } from 'framer-motion'
+import {
+  alpha,
+  Box,
+  Drawer,
+  IconButton,
+  List,
+  ListItem,
+  ListItemButton,
+  ListItemText,
+  Stack,
+} from '@mui/material'
 import { appbarNavigations } from './Appbar'
 import routes from '@/router/routes'
 import { useRouter } from '@/hooks/useRouter'
@@ -34,105 +43,98 @@ export default function Sidebar({ isOpen, toggle }: { isOpen: boolean; toggle: (
   }
 
   return (
-    <>
+    <Drawer
+      anchor="left"
+      open={isOpen}
+      onClose={toggle}
+      slotProps={{
+        paper: {
+          sx: {
+            width: 250,
+            position: 'relative',
+            bgcolor: ({ palette }) => alpha(palette.background.paper, 0.95),
+            backdropFilter: 'blur(10px)',
+            overflow: 'hidden',
+          },
+        },
+      }}
+    >
       <Box
-        component={motion.div}
-        initial="hidden"
-        animate={isOpen ? 'visible' : 'hidden'}
-        variants={{
-          visible: { opacity: 1, pointerEvents: 'auto', transition: { duration: 0.2 } },
-          hidden: { opacity: 0, pointerEvents: 'none', transition: { duration: 0.2 } },
-        }}
-        onClick={toggle}
         sx={{
-          position: 'fixed',
-          inset: `${APPBAR_HEIGHT}px 0 0 0`,
-          backgroundColor: 'rgba(0,0,0,0.4)',
-          zIndex: theme => theme.zIndex.drawer,
+          position: 'absolute',
+          top: -100,
+          left: -100,
+          width: 200,
+          height: 200,
+          borderRadius: '50%',
+          background:
+            'radial-gradient(circle, rgba(220, 36, 60, 0.15) 0%, rgba(255, 255, 255, 0) 70%)',
+          filter: 'blur(10px)',
+          zIndex: -1,
+          pointerEvents: 'none',
         }}
       />
-
       <Box
-        component={motion.aside}
-        initial="closed"
-        animate={isOpen ? 'open' : 'closed'}
-        variants={{
-          open: { x: 0, transition: { stiffness: 300, damping: 30 } },
-          closed: { x: 300, transition: { stiffness: 300, damping: 40 } },
-        }}
         sx={{
-          position: 'fixed',
-          top: 0,
-          ldft: 0,
+          position: 'absolute',
           bottom: 0,
-          width: 275,
-          bgcolor: 'background.paper',
-          zIndex: theme => theme.zIndex.drawer + 1,
-          boxShadow: '0 4px 20px rgba(0,0,0,0.08)',
+          right: 0,
+          transform: 'translate(25%, 25%)',
+          width: 200,
+          height: 200,
+          borderRadius: '50%',
+          background:
+            'radial-gradient(circle, rgba(27, 196, 113, 0.15) 0%, rgba(255, 255, 255, 0) 70%)',
+          filter: 'blur(10px)',
+          zIndex: -1,
+          pointerEvents: 'none',
         }}
-      >
-        <Stack spacing={6}>
-          <Box px={3} pt={3}>
-            <IconButton
-              onClick={toggle}
-              size="large"
-              sx={{ width: 'max-content', height: 'max-content' }}
-            >
-              <Box component="img" src="/icons/common/sidebar-closed.svg" />
-            </IconButton>
-          </Box>
-          <Stack spacing={3} alignItems="center">
-            <Stack direction="row" alignItems="center" maxWidth="100%">
-              <Box component="img" src="/images/logo.png" sx={{ width: 40, height: 40 }} />
-              <SvgColor
-                src="/icons/layout/logo-text-header.svg"
-                sx={{ width: 92, height: 48, color: 'primary.main' }}
-              />
-            </Stack>
-            <Box width="100%">
-              <List
-                component={motion.ul}
-                initial="closed"
-                animate={isOpen ? 'open' : 'closed'}
-                variants={{
-                  open: { transition: { staggerChildren: 0.07, delayChildren: 0.12 } },
-                  closed: { transition: { staggerChildren: 0.05, staggerDirection: -1 } },
-                }}
-                style={{ paddingLeft: 0, margin: 0 }}
-              >
-                {appbarNavigations.map(item => {
-                  const active = activeSection === item.path.replace('#', '')
-                  return (
-                    <motion.div
-                      key={item.path}
-                      variants={{
-                        open: { opacity: 1, y: 0, transition: { stiffness: 500, damping: 30 } },
-                        closed: { opacity: 0, y: 20, transition: { stiffness: 500, damping: 40 } },
-                      }}
-                      style={{ listStyle: 'none' }}
-                    >
-                      <ListItem disablePadding>
-                        <ListItemButton onClick={() => handleClick(item.path)}>
-                          <ListItemText
-                            primary={f({ id: item.title })}
-                            sx={{
-                              color: active ? 'primary.main' : 'grey.400',
-                              filter: active
-                                ? 'drop-shadow(0.5px 1px 0px var(--palette-secondary-main))'
-                                : 'none',
-                              textAlign: 'center',
-                            }}
-                          />
-                        </ListItemButton>
-                      </ListItem>
-                    </motion.div>
-                  )
-                })}
-              </List>
-            </Box>
+      />
+      <Stack spacing={6} sx={{ height: '100%', overflow: 'auto' }}>
+        <Box px={3} pt={3}>
+          <IconButton
+            onClick={toggle}
+            size="large"
+            sx={{ width: 'max-content', height: 'max-content' }}
+          >
+            <Box component="img" src="/icons/common/sidebar-closed.svg" />
+          </IconButton>
+        </Box>
+        <Stack spacing={3} alignItems="center">
+          <Stack direction="row" alignItems="center" maxWidth="100%">
+            <Box component="img" src="/images/logo.png" sx={{ width: 40, height: 40 }} />
+            <SvgColor
+              src="/icons/layout/logo-text-header.svg"
+              sx={{ width: 92, height: 48, color: 'primary.main' }}
+            />
           </Stack>
+          <Box width="100%">
+            <List sx={{ paddingLeft: 0, margin: 0 }}>
+              {appbarNavigations.map(item => {
+                const active = activeSection === item.path.replace('#', '')
+                return (
+                  <Box component="div" key={item.path} sx={{ listStyle: 'none' }}>
+                    <ListItem disablePadding>
+                      <ListItemButton onClick={() => handleClick(item.path)}>
+                        <ListItemText
+                          primary={f({ id: item.title })}
+                          sx={{
+                            color: active ? 'primary.main' : 'grey.400',
+                            filter: active
+                              ? 'drop-shadow(0.5px 1px 0px var(--palette-secondary-main))'
+                              : 'none',
+                            textAlign: 'center',
+                          }}
+                        />
+                      </ListItemButton>
+                    </ListItem>
+                  </Box>
+                )
+              })}
+            </List>
+          </Box>
         </Stack>
-      </Box>
-    </>
+      </Stack>
+    </Drawer>
   )
 }
